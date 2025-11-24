@@ -46,7 +46,7 @@
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
                             <h3>Call Us</h3>
-                            <p>+44 1902 123456</p>
+                            <p><a class="text-white" href="tel:+44 7984 863164">+44 7984 863164</a></p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -54,7 +54,7 @@
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h3>Email Us</h3>
-                            <p>contact@esesphere.com</p>
+                            <p>info@esesphere.com</p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -62,7 +62,7 @@
                         <i class="bi bi-clock flex-shrink-0"></i>
                         <div>
                             <h3>Open Hours:</h3>
-                            <p>Mon-Sat: 9AM - 6PM</p>
+                            <p>Mon-Fri: 9AM - 5PM</p>
                         </div>
                     </div><!-- End Info Item -->
                 </div>

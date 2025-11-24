@@ -40,7 +40,7 @@
             <div class="container d-flex justify-content-center justify-content-md-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@esesphere.com">info@esesphere.com</a></i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="tel:07448222483">0 7448 222483</a></span></i>
+                    <i class="bi bi-phone d-flex align-items-center ms-4"><span><a href="tel:+44 7984 863164">+44 7984 863164</a></span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
                     <a href="https://x.com/eseSphereEnt" class="twitter"><i class="bi bi-twitter-x"></i></a>

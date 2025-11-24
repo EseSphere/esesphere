@@ -57,7 +57,7 @@
                 <p>15 Waterloo Road</p>
                 <p>Wolverhampton, WV1 3DJ</p>
                 <p>United Kingdom</p>
-                <p class="mt-4"><strong>Phone:</strong> <span>0 7448 222483</span></p>
+                <p class="mt-4"><strong>Phone:</strong> <span><a href="tel:+44 7984 863164">+44 7984 863164</a></span></p>
                 <p><strong>Email:</strong> <span>info@esesphere.com</span></p>
             </div>
         </div>
@@ -139,7 +139,7 @@
 
     showSection(currentStep);
 </script>
-
+<?php include_once('whatsapp-chat.php'); ?>
 </body>
 
 </html>
