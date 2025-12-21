@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EseSphere Ltd | Design. Develop. Delight.</title>
+    <title>EseSphere Limited | Design. Develop. Delight.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="keywords" content="EseSphere Ltd, Web Design, Mobile App Development, UI/UX Design, Digital Marketing, E-commerce Development, Print & Graphics, SEO, App Maintenance, Responsive Design, Software Development, Technology Services">
     <meta name="description" content="EseSphere Ltd delivers world-class web and mobile solutions. We design, develop, and delight with websites, apps, digital marketing, and innovative technology services tailored to your business.">
