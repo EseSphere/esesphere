@@ -9,7 +9,7 @@
     .nda-container {
         background: #ffffff;
         max-width: 960px;
-        margin: 50px auto;
+        margin: 100px auto;
         padding: 50px;
         border-radius: 8px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
