@@ -9,7 +9,7 @@
     .nda-container {
         background: #ffffff;
         max-width: 960px;
-        margin: 100px auto;
+        margin: 130px auto;
         padding: 50px;
         border-radius: 8px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -64,6 +64,22 @@
         background-color: #fff;
     }
 
+    .highlight-clause {
+        background: #fef3c7;
+        border-left: 5px solid #f59e0b;
+        padding: 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .acknowledgment-box {
+        background: #f9fafb;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
     label {
         font-weight: 500;
     }
@@ -88,7 +104,7 @@
 <div class="nda-container">
 
     <div class="nda-header">
-        <h1>CONFIDENTIALITY & NON-DISCLOSURE AGREEMENT</h1>
+        <h1>CONTRIBUTOR CONFIDENTIALITY & INTELLECTUAL PROPERTY AGREEMENT</h1>
         <p class="meta mt-2">
             <strong>Company:</strong> EseSphere Limited &nbsp;|&nbsp;
             <strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive<br>
@@ -97,109 +113,84 @@
     </div>
 
     <p>
-        This Confidentiality and Non-Disclosure Agreement (“Agreement”) is entered into
-        by and between <strong>EseSphere Limited</strong>, a company incorporated in the
-        United Kingdom (“Disclosing Party”), and the undersigned individual or entity
-        (“Receiving Party”). This Agreement governs access to confidential and proprietary
-        information disclosed in connection with the <strong>StaffLinks Project</strong>.
+        This Contributor Confidentiality & Intellectual Property Agreement (“Agreement”)
+        is entered into by and between <strong>EseSphere Limited</strong>, a company
+        incorporated in the United Kingdom (“Company”), and the undersigned individual
+        or entity (“Contributor”). This Agreement governs all contributions, access to
+        confidential information, and intellectual property relating to the
+        <strong>StaffLinks Project</strong>.
     </p>
 
     <h2>1. Purpose</h2>
     <p>
-        The Receiving Party may access Confidential Information solely for evaluating,
-        developing, testing, supporting, or contributing to the StaffLinks platform.
-        Any other use is strictly prohibited.
+        The Contributor may access Confidential Information solely for evaluating,
+        developing, testing, or contributing to the StaffLinks platform.
     </p>
 
     <h2>2. Definition of Confidential Information</h2>
     <ul>
         <li>Source code, repositories, system architecture, APIs, and databases</li>
-        <li>Trade secrets, inventions, algorithms, and technical processes</li>
+        <li>Trade secrets, algorithms, inventions, and technical processes</li>
         <li>Business strategies, pricing, forecasts, and financial data</li>
-        <li>User data, operational data, internal policies, and documentation</li>
-        <li>Marketing plans, branding assets, designs, and product roadmaps</li>
+        <li>User data, internal documentation, and operational materials</li>
     </ul>
 
     <h2>3. Confidentiality Obligations</h2>
     <ul>
-        <li>Maintain all Confidential Information in strict confidence</li>
-        <li>Use Confidential Information solely for authorised purposes</li>
-        <li>Restrict access to authorised personnel only</li>
-        <li>Apply reasonable administrative, technical, and physical safeguards</li>
+        <li>Maintain Confidential Information in strict confidence</li>
+        <li>Use information solely for authorised project purposes</li>
+        <li>Prevent unauthorised access or disclosure</li>
     </ul>
 
-    <h2>4. Exclusions</h2>
+    <h2>4. Intellectual Property Assignment</h2>
     <p>
-        Confidential Information does not include information that is publicly available
-        without breach, independently developed, or lawfully obtained from a third party.
+        The Contributor hereby irrevocably assigns to <strong>EseSphere Limited</strong>
+        all rights, title, and interest in any work product, code, designs, inventions,
+        documentation, or materials created in connection with the StaffLinks Project,
+        whether created individually or jointly.
     </p>
 
-    <h2>5. Intellectual Property Rights</h2>
+    <h2>5. GitHub & Code Contributions</h2>
     <p>
-        All Confidential Information and derivative works remain the exclusive property
-        of <strong>EseSphere Limited</strong>. No licence or ownership rights are granted.
+        All code contributions made via GitHub, GitLab, Bitbucket, or any other repository
+        related to the project shall be deemed “work made for hire” and the exclusive
+        property of <strong>EseSphere Limited</strong>, regardless of repository ownership
+        or contributor username.
     </p>
 
-    <h2>6. Data Protection & GDPR</h2>
+    <h2>6. Founder, Equity & Ownership Disclaimer</h2>
     <p>
-        Where Confidential Information includes personal data, the Receiving Party agrees
-        to comply with all applicable data protection laws, including the UK GDPR and
-        Data Protection Act 2018.
+        Contribution to the project does not grant the Contributor founder status,
+        equity, shares, voting rights, or ownership interest in the Company or its
+        products unless explicitly agreed in a separate written agreement.
     </p>
 
-    <h2>7. Non-Circumvention</h2>
+    <h2>7. No Partnership or Employment</h2>
     <p>
-        The Receiving Party shall not use Confidential Information to compete with,
-        replicate, or bypass the business interests of the Disclosing Party.
+        Nothing in this Agreement creates an employment, partnership, agency, or joint
+        venture relationship.
     </p>
 
-    <h2>8. Non-Solicitation</h2>
-    <p>
-        During the term of this Agreement and for twelve (12) months thereafter, the
-        Receiving Party shall not solicit employees, contractors, or clients of the
-        Disclosing Party without prior written consent.
-    </p>
+    <h2>8. Compensation & Revenue-Based Remuneration</h2>
+    <div class="highlight-clause">
+        <p>
+            The Contributor acknowledges that the software is under development and that
+            <strong>no payment or financial compensation</strong> is provided at this stage.
+        </p>
+        <p>
+            Compensation may only be considered after full development and commercial
+            success, subject to written agreement.
+        </p>
 
-    <h2>9. Return or Destruction of Materials</h2>
-    <p>
-        Upon request or termination, all Confidential Information shall be returned
-        or permanently destroyed, including backups and copies.
-    </p>
-
-    <h2>10. Remedies</h2>
-    <p>
-        Unauthorised disclosure may cause irreparable harm. The Disclosing Party shall
-        be entitled to injunctive relief, damages, and all available legal remedies.
-    </p>
-
-    <h2>11. No Partnership or Employment</h2>
-    <p>
-        Nothing in this Agreement creates a partnership, employment, or agency
-        relationship between the parties.
-    </p>
-
-    <h2>12. Term & Survival</h2>
-    <p>
-        This Agreement remains in effect during the relationship and for five (5) years
-        thereafter. Sections relating to confidentiality and IP shall survive termination.
-    </p>
-
-    <h2>13. Governing Law & Jurisdiction</h2>
-    <p>
-        This Agreement shall be governed by the laws of <strong>England and Wales</strong>,
-        with exclusive jurisdiction vested in its courts.
-    </p>
-
-    <h2>14. Amendments & Waiver</h2>
-    <p>
-        Any amendment or waiver must be in writing and signed by both parties.
-    </p>
-
-    <h2>15. Electronic Execution</h2>
-    <p>
-        This Agreement may be executed electronically and in counterparts, each of which
-        shall be deemed an original.
-    </p>
+        <div class="acknowledgment-box">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="noPaymentAck">
+                <label class="form-check-label" for="noPaymentAck">
+                    <strong>I understand there is no payment at this stage.</strong>
+                </label>
+            </div>
+        </div>
+    </div>
 
     <hr class="my-5">
 
@@ -227,7 +218,7 @@
         <input type="text" id="dateField" class="form-control" readonly>
     </div>
 
-    <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+    <button class="btn btn-primary" onclick="validateAndPrint()">Print / Save as PDF</button>
 
 </div>
 
@@ -238,8 +229,18 @@
         month: 'long',
         year: 'numeric'
     });
+
     document.getElementById('currentDate').innerText = formattedDate;
     document.getElementById('dateField').value = formattedDate;
+
+    function validateAndPrint() {
+        const checkbox = document.getElementById('noPaymentAck');
+        if (!checkbox.checked) {
+            alert("You must acknowledge that there is no payment at this stage before proceeding.");
+            return;
+        }
+        window.print();
+    }
 
     const canvas = document.getElementById('signaturePad');
     const ctx = canvas.getContext('2d');
@@ -283,6 +284,10 @@
         drawing = false;
     }
 
+    function clearSignature() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
     canvas.addEventListener('mousedown', start);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stop);
@@ -290,10 +295,6 @@
     canvas.addEventListener('touchstart', start);
     canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', stop);
-
-    function clearSignature() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
 </script>
 
 <?php require_once "footer.php"; ?>
