@@ -121,36 +121,46 @@
         <strong>StaffLinks Project</strong>.
     </p>
 
-    <h2>1. Purpose</h2>
+    <h2>1. Definitions & Interpretation</h2>
+    <ul>
+        <li><strong>Confidential Information:</strong> All information disclosed to the Contributor that is not publicly available, including technical data, source code, business plans, and trade secrets.</li>
+        <li><strong>Contribution:</strong> Any code, design, documentation, idea, or work product provided by the Contributor to the Company.</li>
+        <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, and associated services.</li>
+    </ul>
+
+    <h2>2. Purpose</h2>
     <p>
         The Contributor may access Confidential Information solely for evaluating,
         developing, testing, or contributing to the StaffLinks platform.
     </p>
 
-    <h2>2. Definition of Confidential Information</h2>
+    <h2>3. Representations & Warranties</h2>
     <ul>
-        <li>Source code, repositories, system architecture, APIs, and databases</li>
-        <li>Trade secrets, algorithms, inventions, and technical processes</li>
-        <li>Business strategies, pricing, forecasts, and financial data</li>
-        <li>User data, internal documentation, and operational materials</li>
+        <li>The Contributor represents that all contributions are original and do not infringe third-party rights.</li>
+        <li>The Contributor has full right and authority to enter this Agreement and assign all intellectual property to the Company.</li>
     </ul>
 
-    <h2>3. Confidentiality Obligations</h2>
+    <h2>4. Confidentiality Obligations</h2>
     <ul>
-        <li>Maintain Confidential Information in strict confidence</li>
-        <li>Use information solely for authorised project purposes</li>
-        <li>Prevent unauthorised access or disclosure</li>
+        <li>Maintain all Confidential Information in strict confidence.</li>
+        <li>Use information solely for authorised project purposes.</li>
+        <li>Prevent unauthorised access, sharing, or copying.</li>
     </ul>
 
-    <h2>4. Intellectual Property Assignment</h2>
+    <h2>5. Confidentiality Exceptions</h2>
     <p>
-        The Contributor hereby irrevocably assigns to <strong>EseSphere Limited</strong>
+        Confidential Information does not include information that: (a) is publicly available without breach; (b) was lawfully obtained from a third party; (c) is independently developed by the Contributor without reference to the Company’s Confidential Information; or (d) is required to be disclosed by law or court order.
+    </p>
+
+    <h2>6. Intellectual Property Assignment</h2>
+    <p>
+        The Contributor irrevocably assigns to <strong>EseSphere Limited</strong>
         all rights, title, and interest in any work product, code, designs, inventions,
         documentation, or materials created in connection with the StaffLinks Project,
         whether created individually or jointly.
     </p>
 
-    <h2>5. GitHub & Code Contributions</h2>
+    <h2>7. GitHub & Code Contributions</h2>
     <p>
         All code contributions made via GitHub, GitLab, Bitbucket, or any other repository
         related to the project shall be deemed “work made for hire” and the exclusive
@@ -158,20 +168,18 @@
         or contributor username.
     </p>
 
-    <h2>6. Founder, Equity & Ownership Disclaimer</h2>
+    <h2>8. Founder, Equity & Ownership Disclaimer</h2>
     <p>
-        Contribution to the project does not grant the Contributor founder status,
-        equity, shares, voting rights, or ownership interest in the Company or its
-        products unless explicitly agreed in a separate written agreement.
+        Contribution does not grant founder status, equity, shares, voting rights, or ownership interest in the Company unless explicitly agreed in writing.
     </p>
 
-    <h2>7. No Partnership or Employment</h2>
+    <h2>9. No Partnership or Employment</h2>
     <p>
         Nothing in this Agreement creates an employment, partnership, agency, or joint
         venture relationship.
     </p>
 
-    <h2>8. Compensation & Revenue-Based Remuneration</h2>
+    <h2>10. Compensation & Revenue-Based Remuneration</h2>
     <div class="highlight-clause">
         <p>
             The Contributor acknowledges that the software is under development and that
@@ -191,6 +199,36 @@
             </div>
         </div>
     </div>
+
+    <h2>11. Term & Termination</h2>
+    <p>
+        This Agreement shall remain in effect until terminated by either party upon written notice. Sections relating to intellectual property, confidentiality, and warranties shall survive termination.
+    </p>
+
+    <h2>12. Liability Limitations</h2>
+    <p>
+        The Company shall not be liable for any indirect, incidental, or consequential damages arising from the Contributor’s involvement in the project. The Contributor agrees to participate at their own risk.
+    </p>
+
+    <h2>13. Indemnification</h2>
+    <p>
+        The Contributor agrees to indemnify and hold harmless the Company against any claims, damages, or losses arising from breach of this Agreement, infringement of third-party rights, or illegal contributions.
+    </p>
+
+    <h2>14. Dispute Resolution</h2>
+    <p>
+        Any dispute arising from this Agreement shall first be attempted to resolve through good faith negotiation. If unresolved, disputes shall be submitted to binding arbitration under the laws of England and Wales.
+    </p>
+
+    <h2>15. Governing Law & Jurisdiction</h2>
+    <p>
+        This Agreement is governed by the laws of <strong>England and Wales</strong>, with exclusive jurisdiction vested in its courts.
+    </p>
+
+    <h2>16. Entire Agreement & Amendments</h2>
+    <p>
+        This Agreement constitutes the entire agreement between the parties. Any amendment must be in writing and signed by both parties.
+    </p>
 
     <hr class="my-5">
 
@@ -229,7 +267,6 @@
         month: 'long',
         year: 'numeric'
     });
-
     document.getElementById('currentDate').innerText = formattedDate;
     document.getElementById('dateField').value = formattedDate;
 
