@@ -1,4 +1,129 @@
-<?php require_once "header.php"; ?>
+<?php
+require_once "header.php";
+require 'fpdf/fpdf.php'; // Make sure FPDF is included
+
+// MySQL connection
+$mysqli = new mysqli("localhost", "db_user", "db_pass", "db_name");
+if ($mysqli->connect_errno) {
+    die("Failed to connect to MySQL: " . $mysqli->connect_error);
+}
+
+$successMsg = "";
+$errorMsg = "";
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $name = $_POST['name'];
+    $role = $_POST['role'];
+    $date = $_POST['agreement_date'];
+    $signatureData = $_POST['signatureData'];
+
+    // Convert Base64 signature to binary
+    $signatureData = str_replace('data:image/png;base64,', '', $signatureData);
+    $signatureData = base64_decode($signatureData);
+
+    // Save into MySQL
+    $stmt = $mysqli->prepare("INSERT INTO contributor_agreements (name, role, signature, agreement_date) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssbs", $name, $role, $null, $date);
+    $stmt->send_long_data(2, $signatureData);
+    $stmt->execute();
+    $stmt->close();
+
+    // ------------------- PDF Generation -------------------
+    $pdf = new FPDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 16);
+    $pdf->Cell(0, 10, "CONTRIBUTOR CONFIDENTIALITY & INTELLECTUAL PROPERTY AGREEMENT", 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial', '', 12);
+
+    // Helper functions
+    function addHeading($pdf, $text)
+    {
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->MultiCell(0, 6, $text);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Ln(2);
+    }
+    function addParagraph($pdf, $text)
+    {
+        $pdf->MultiCell(0, 6, $text);
+        $pdf->Ln(2);
+    }
+
+    addParagraph($pdf, "Name: $name\nRole: $role\nDate: $date");
+
+    addHeading($pdf, "1. Purpose");
+    addParagraph($pdf, "The Contributor may access Confidential Information solely for evaluating, developing, testing, or contributing to StaffLinks.");
+
+    addHeading($pdf, "2. Intellectual Property Assignment");
+    addParagraph($pdf, "The Contributor irrevocably assigns all rights, title, and interest in any work product or code created for StaffLinks to EseSphere Limited.");
+
+    addHeading($pdf, "3. GitHub & Code Contribution Ownership");
+    addParagraph($pdf, "All code contributions via repositories are considered 'work made for hire' and are exclusive property of EseSphere Limited.");
+
+    addHeading($pdf, "4. Founder / Equity Disclaimer");
+    addParagraph($pdf, "Contribution does not grant founder status, equity, shares, voting rights, or ownership interest unless explicitly agreed in writing.");
+
+    // Highlighted No Payment Clause
+    $pdf->SetFillColor(254, 243, 199); // light yellow
+    $pdf->SetDrawColor(245, 158, 11); // orange border
+    $pdf->SetLineWidth(0.5);
+    $y = $pdf->GetY();
+    $pdf->Rect(10, $y, 190, 25, 'FD');
+    $pdf->SetXY(12, $y + 3);
+    addParagraph($pdf, "No Payment Clause: The Contributor acknowledges that the software is under development and no payment is provided at this stage. Compensation may be considered after full development and commercial success.");
+    $pdf->Ln(30);
+
+    // Signature
+    addHeading($pdf, "Contributor Signature");
+    $tempSig = tempnam(sys_get_temp_dir(), 'sig') . ".png";
+    file_put_contents($tempSig, $signatureData);
+    $pdf->Image($tempSig, $pdf->GetX(), $pdf->GetY(), 60, 30);
+    unlink($tempSig);
+
+    $pdfFilePath = tempnam(sys_get_temp_dir(), 'agreement') . '.pdf';
+    $pdf->Output($pdfFilePath, 'F');
+
+    // ------------------- Email using PHP mail() -------------------
+    $to = 'info@esesphere.com';
+    $subject = 'New Contributor Agreement';
+    $message = "A new Contributor Agreement has been signed by $name ($role) on $date.";
+
+    $separator = md5(time());
+    $eol = "\r\n";
+
+    $headers = "From: no-reply@esesphere.com" . $eol;
+    $headers .= "MIME-Version: 1.0" . $eol;
+    $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"" . $eol;
+
+    // message body
+    $body = "--" . $separator . $eol;
+    $body .= "Content-Type: text/plain; charset=\"iso-8859-1\"" . $eol;
+    $body .= "Content-Transfer-Encoding: 7bit" . $eol . $eol;
+    $body .= $message . $eol;
+
+    // attachment
+    $attachment = chunk_split(base64_encode(file_get_contents($pdfFilePath)));
+    $body .= "--" . $separator . $eol;
+    $body .= "Content-Type: application/pdf; name=\"Contributor_Agreement.pdf\"" . $eol;
+    $body .= "Content-Transfer-Encoding: base64" . $eol;
+    $body .= "Content-Disposition: attachment; filename=\"Contributor_Agreement.pdf\"" . $eol . $eol;
+    $body .= $attachment . $eol;
+    $body .= "--" . $separator . "--";
+
+    if (mail($to, $subject, $body, $headers)) {
+        $successMsg = "Agreement saved and email sent successfully.";
+    } else {
+        $errorMsg = "Email could not be sent.";
+    }
+
+    unlink($pdfFilePath);
+}
+?>
+
 <style>
     body {
         background-color: #eef1f5;
@@ -102,6 +227,8 @@
 </style>
 
 <div class="nda-container">
+    <?php if ($successMsg) echo '<div class="alert alert-success">' . $successMsg . '</div>'; ?>
+    <?php if ($errorMsg) echo '<div class="alert alert-danger">' . $errorMsg . '</div>'; ?>
 
     <div class="nda-header">
         <h1>CONTRIBUTOR CONFIDENTIALITY & INTELLECTUAL PROPERTY AGREEMENT</h1>
@@ -112,173 +239,39 @@
         </p>
     </div>
 
-    <p>
-        This Contributor Confidentiality & Intellectual Property Agreement (“Agreement”)
-        is entered into by and between <strong>EseSphere Limited</strong>, a company
-        incorporated in the United Kingdom (“Company”), and the undersigned individual
-        or entity (“Contributor”). This Agreement governs all contributions, access to
-        confidential information, and intellectual property relating to the
-        <strong>StaffLinks Project</strong>.
-    </p>
-
-    <h2>1. Definitions & Interpretation</h2>
-    <ul>
-        <li><strong>Confidential Information:</strong> All information disclosed to the Contributor that is not publicly available, including technical data, source code, business plans, and trade secrets.</li>
-        <li><strong>Contribution:</strong> Any code, design, documentation, idea, or work product provided by the Contributor to the Company.</li>
-        <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, and associated services.</li>
-    </ul>
-
-    <h2>2. Purpose</h2>
-    <p>
-        The Contributor may access Confidential Information solely for evaluating,
-        developing, testing, or contributing to the StaffLinks platform.
-    </p>
-
-    <h2>3. Representations & Warranties</h2>
-    <ul>
-        <li>The Contributor represents that all contributions are original and do not infringe third-party rights.</li>
-        <li>The Contributor has full right and authority to enter this Agreement and assign all intellectual property to the Company.</li>
-    </ul>
-
-    <h2>4. Confidentiality Obligations</h2>
-    <ul>
-        <li>Maintain all Confidential Information in strict confidence.</li>
-        <li>Use information solely for authorised project purposes.</li>
-        <li>Prevent unauthorised access, sharing, or copying.</li>
-    </ul>
-
-    <h2>5. Confidentiality Exceptions</h2>
-    <p>
-        Confidential Information does not include information that: (a) is publicly available without breach; (b) was lawfully obtained from a third party; (c) is independently developed by the Contributor without reference to the Company’s Confidential Information; or (d) is required to be disclosed by law or court order.
-    </p>
-
-    <h2>6. Intellectual Property Assignment</h2>
-    <p>
-        The Contributor irrevocably assigns to <strong>EseSphere Limited</strong>
-        all rights, title, and interest in any work product, code, designs, inventions,
-        documentation, or materials created in connection with the StaffLinks Project,
-        whether created individually or jointly.
-    </p>
-
-    <h2>7. GitHub & Code Contributions</h2>
-    <p>
-        All code contributions made via GitHub, GitLab, Bitbucket, or any other repository
-        related to the project shall be deemed “work made for hire” and the exclusive
-        property of <strong>EseSphere Limited</strong>, regardless of repository ownership
-        or contributor username.
-    </p>
-
-    <h2>8. Founder, Equity & Ownership Disclaimer</h2>
-    <p>
-        Contribution does not grant founder status, equity, shares, voting rights, or ownership interest in the Company unless explicitly agreed in writing.
-    </p>
-
-    <h2>9. No Partnership or Employment</h2>
-    <p>
-        Nothing in this Agreement creates an employment, partnership, agency, or joint
-        venture relationship.
-    </p>
-
-    <h2>10. Compensation & Revenue-Based Remuneration</h2>
-    <div class="highlight-clause">
-        <p>
-            The Contributor acknowledges that the software is under development and that
-            <strong>no payment or financial compensation</strong> is provided at this stage.
-        </p>
-        <p>
-            Compensation may only be considered after full development and commercial
-            success, subject to written agreement.
-        </p>
-
-        <div class="acknowledgment-box">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="noPaymentAck">
-                <label class="form-check-label" for="noPaymentAck">
-                    <strong>I understand there is no payment at this stage.</strong>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <h2>11. Term & Termination</h2>
-    <p>
-        This Agreement shall remain in effect until terminated by either party upon written notice. Sections relating to intellectual property, confidentiality, and warranties shall survive termination.
-    </p>
-
-    <h2>12. Liability Limitations</h2>
-    <p>
-        The Company shall not be liable for any indirect, incidental, or consequential damages arising from the Contributor’s involvement in the project. The Contributor agrees to participate at their own risk.
-    </p>
-
-    <h2>13. Indemnification</h2>
-    <p>
-        The Contributor agrees to indemnify and hold harmless the Company against any claims, damages, or losses arising from breach of this Agreement, infringement of third-party rights, or illegal contributions.
-    </p>
-
-    <h2>14. Dispute Resolution</h2>
-    <p>
-        Any dispute arising from this Agreement shall first be attempted to resolve through good faith negotiation. If unresolved, disputes shall be submitted to binding arbitration under the laws of England and Wales.
-    </p>
-
-    <h2>15. Governing Law & Jurisdiction</h2>
-    <p>
-        This Agreement is governed by the laws of <strong>England and Wales</strong>, with exclusive jurisdiction vested in its courts.
-    </p>
-
-    <h2>16. Entire Agreement & Amendments</h2>
-    <p>
-        This Agreement constitutes the entire agreement between the parties. Any amendment must be in writing and signed by both parties.
-    </p>
-
-    <hr class="my-5">
-
     <h2>Acceptance & Signature</h2>
 
-    <div class="row mb-4">
-        <div class="col-md-6">
-            <label>Name</label>
-            <input type="text" class="form-control" placeholder="Full legal name">
+    <form method="POST" id="contributorForm">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Full legal name" required>
+            </div>
+            <div class="col-md-6">
+                <label>Role / Company</label>
+                <input type="text" name="role" class="form-control" placeholder="Role or organisation" required>
+            </div>
         </div>
-        <div class="col-md-6">
-            <label>Role / Company</label>
-            <input type="text" class="form-control" placeholder="Role or organisation">
+
+        <div class="signature-box mb-3">
+            <label>Signature</label>
+            <canvas id="signaturePad"></canvas>
+            <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="clearSignature()">Clear Signature</button>
         </div>
-    </div>
 
-    <div class="signature-box mb-3">
-        <label>Signature</label>
-        <canvas id="signaturePad"></canvas>
-        <button class="btn btn-sm btn-outline-secondary mt-2" onclick="clearSignature()">Clear Signature</button>
-    </div>
+        <input type="hidden" name="signatureData" id="signatureData">
+        <input type="hidden" name="agreement_date" id="agreementDate">
 
-    <div class="mb-4">
-        <label>Date</label>
-        <input type="text" id="dateField" class="form-control" readonly>
-    </div>
+        <div class="mb-4">
+            <label>Date</label>
+            <input type="text" id="dateField" class="form-control" readonly>
+        </div>
 
-    <button class="btn btn-primary" onclick="validateAndPrint()">Print / Save as PDF</button>
-
+        <button type="submit" class="btn btn-primary" onclick="return captureAndValidate()">Submit & Send</button>
+    </form>
 </div>
 
 <script>
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('en-GB', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-    });
-    document.getElementById('currentDate').innerText = formattedDate;
-    document.getElementById('dateField').value = formattedDate;
-
-    function validateAndPrint() {
-        const checkbox = document.getElementById('noPaymentAck');
-        if (!checkbox.checked) {
-            alert("You must acknowledge that there is no payment at this stage before proceeding.");
-            return;
-        }
-        window.print();
-    }
-
     const canvas = document.getElementById('signaturePad');
     const ctx = canvas.getContext('2d');
     let drawing = false;
@@ -324,7 +317,6 @@
     function clearSignature() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-
     canvas.addEventListener('mousedown', start);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stop);
@@ -332,6 +324,28 @@
     canvas.addEventListener('touchstart', start);
     canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', stop);
+
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    });
+    document.getElementById('dateField').value = document.getElementById('currentDate').innerText;
+
+    function captureAndValidate() {
+        const checkbox = document.getElementById('noPaymentAck');
+        if (checkbox && !checkbox.checked) {
+            alert("You must acknowledge that there is no payment at this stage.");
+            return false;
+        }
+        if (canvas.toDataURL() === document.createElement('canvas').toDataURL()) {
+            alert("Please provide your signature.");
+            return false;
+        }
+        document.getElementById('signatureData').value = canvas.toDataURL();
+        document.getElementById('agreementDate').value = document.getElementById('dateField').value;
+        return true;
+    }
 </script>
 
 <?php require_once "footer.php"; ?>
