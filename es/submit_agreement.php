@@ -1,4 +1,6 @@
 <?php
+require_once('tcpdf/tcpdf.php'); // Include TCPDF
+
 // Database credentials
 $host = "localhost";
 $user = "root";
@@ -7,9 +9,7 @@ $db   = "esesphere";
 
 // Create connection
 $conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die(json_encode(["status" => "error", "message" => "Database connection failed: " . $conn->connect_error]));
-}
+if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $conn->real_escape_string($_POST['name']);
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $signatureData = $_POST['signature'];
 
-    // Remove "data:image/png;base64,"
+    // Save signature image
     $signatureData = str_replace('data:image/png;base64,', '', $signatureData);
     $signatureData = str_replace(' ', '+', $signatureData);
 
@@ -25,21 +25,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!is_dir($signatureDir)) mkdir($signatureDir, 0755, true);
 
     $fileName = $signatureDir . 'signature_' . time() . '.png';
-    $success = file_put_contents($fileName, base64_decode($signatureData));
+    file_put_contents($fileName, base64_decode($signatureData));
 
-    if ($success) {
-        $sql = "INSERT INTO contributor_agreements (name, role, date, signature_path) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $name, $role, $date, $fileName);
+    // Insert into database
+    $stmt = $conn->prepare("INSERT INTO contributor_agreements (name, role, date, signature_path) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $role, $date, $fileName);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
 
-        if ($stmt->execute()) {
-            echo json_encode(["status" => "success", "message" => "Agreement submitted successfully"]);
-        } else {
-            echo json_encode(["status" => "error", "message" => $stmt->error]);
-        }
-        $stmt->close();
-    } else {
-        echo json_encode(["status" => "error", "message" => "Failed to save signature image"]);
-    }
+    // Generate PDF
+    $pdf = new TCPDF();
+    $pdf->SetCreator('EseSphere Limited');
+    $pdf->SetAuthor('EseSphere Limited');
+    $pdf->SetTitle('Contributor Agreement');
+    $pdf->SetMargins(20, 20, 20);
+    $pdf->AddPage();
+
+    $html = '
+    <h1 style="color:#001f4d;text-align:center;">Contributor Confidentiality & IP Agreement</h1>
+    <p><strong>Company:</strong> EseSphere Limited</p>
+    <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
+    <p><strong>Effective Date:</strong> 22 December 2025</p>
+    <h3 style="color:#001f4d;">Contributor Details</h3>
+    <p><strong>Name:</strong> ' . $name . '</p>
+    <p><strong>Role / Company:</strong> ' . $role . '</p>
+    <p><strong>Date:</strong> ' . $date . '</p>
+    <h3 style="color:#001f4d;">Signature</h3>
+    <p><img src="' . $fileName . '" width="300" height="100"/></p>
+    <p>By signing above, the contributor acknowledges and agrees to all terms of this Agreement.</p>
+    ';
+
+    $pdf->writeHTML($html, true, false, true, false, '');
+    $pdfFileName = 'Contributor_Agreement_' . time() . '.pdf';
+
+    // Output PDF for download
+    $pdf->Output($pdfFileName, 'D'); // 'D' forces download
 }
-$conn->close();
