@@ -1,152 +1,152 @@
    <?php include('header.php'); ?>
-   <link rel="stylesheet" href="./assets/css/style.css"
+   <link rel="stylesheet" href="./assets/css/style.css">
 
 
-       <div class="container">
-   <div class="agreement-card">
-       <h1><i class="fa-solid fa-file-signature"></i> Contributor Confidentiality & IP Agreement</h1>
-       <p><strong>Company:</strong> EseSphere Limited</p>
-       <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
-       <p><strong>Effective Date:</strong> <?= date('d F Y'); ?></p>
+   <div class="container">
+       <div class="agreement-card">
+           <h1><i class="fa-solid fa-file-signature"></i> Contributor Confidentiality & IP Agreement</h1>
+           <p><strong>Company:</strong> EseSphere Limited</p>
+           <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
+           <p><strong>Effective Date:</strong> <?= date('d F Y'); ?></p>
 
-       <h3>Agreement Details</h3>
-       <div class="agreement-content">
+           <h3>Agreement Details</h3>
+           <div class="agreement-content">
 
-           <div class="section-card">
-               <p><i class="fa-solid fa-circle-info section-icon"></i><strong>1. Definitions & Interpretation</strong></p>
-               <ul>
-                   <li><strong>Confidential Information:</strong> Any information disclosed to the Contributor that is not publicly known, including software architecture, source code, business plans, user data, algorithms, financials, and trade secrets.</li>
-                   <li><strong>Contribution:</strong> Any code, design, documentation, idea, research, prototype, or other work product provided by the Contributor.</li>
-                   <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, features, modules, updates, and associated services.</li>
-                   <li><strong>Company Materials:</strong> Any documentation, tools, data, or resources provided by the Company to the Contributor for the project.</li>
-               </ul>
+               <div class="section-card">
+                   <p><i class="fa-solid fa-circle-info section-icon"></i><strong>1. Definitions & Interpretation</strong></p>
+                   <ul>
+                       <li><strong>Confidential Information:</strong> Any information disclosed to the Contributor that is not publicly known, including software architecture, source code, business plans, user data, algorithms, financials, and trade secrets.</li>
+                       <li><strong>Contribution:</strong> Any code, design, documentation, idea, research, prototype, or other work product provided by the Contributor.</li>
+                       <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, features, modules, updates, and associated services.</li>
+                       <li><strong>Company Materials:</strong> Any documentation, tools, data, or resources provided by the Company to the Contributor for the project.</li>
+                   </ul>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-bullseye section-icon"></i><strong>2. Purpose</strong></p>
+                   <p>The Contributor may access Confidential Information solely for evaluating, developing, testing, or contributing to the StaffLinks platform. The purpose includes improving platform functionality, debugging, user experience enhancement, and feature development.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-shield-halved section-icon"></i><strong>3. Representations & Warranties</strong></p>
+                   <ul>
+                       <li>The Contributor represents that all contributions are original, free from any third-party rights, and created independently unless otherwise disclosed.</li>
+                       <li>The Contributor has full legal authority to enter this Agreement and assign intellectual property rights to the Company.</li>
+                       <li>The Contributor warrants that no contributions violate any laws, regulations, or contractual obligations.</li>
+                   </ul>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-lock section-icon"></i><strong>4. Confidentiality Obligations</strong></p>
+                   <ul>
+                       <li>Keep all Confidential Information strictly confidential.</li>
+                       <li>Use information solely for authorized project purposes.</li>
+                       <li>Prevent unauthorized access, sharing, duplication, or use for personal gain.</li>
+                       <li>Immediately report any suspected breaches or unauthorized disclosures.</li>
+                   </ul>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-exclamation-triangle section-icon"></i><strong>5. Confidentiality Exceptions</strong></p>
+                   <ul>
+                       <li>(a) Information already public without breach.</li>
+                       <li>(b) Lawfully obtained from a third party without obligation of confidentiality.</li>
+                       <li>(c) Independently developed without using Company’s Confidential Information.</li>
+                       <li>(d) Required to be disclosed by law, regulation, or court order.</li>
+                   </ul>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-lightbulb section-icon"></i><strong>6. Intellectual Property Assignment</strong></p>
+                   <p>The Contributor irrevocably assigns to EseSphere Limited all rights, title, and interest in any work product, code, design, invention, documentation, or other contributions created in connection with the StaffLinks Project, whether individually or jointly.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-code section-icon"></i><strong>7. GitHub & Code Contributions</strong></p>
+                   <p>All code contributions submitted through repositories such as GitHub, GitLab, Bitbucket, or other platforms are considered "work made for hire" and are the exclusive property of EseSphere Limited, regardless of repository ownership or username.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-user-check section-icon"></i><strong>8. Founder, Equity & Ownership Disclaimer</strong></p>
+                   <p>Participation or contribution to the project does not grant founder status, equity, shares, voting rights, or ownership interest unless explicitly documented in a separate written agreement.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-handshake section-icon"></i><strong>9. No Partnership or Employment</strong></p>
+                   <p>Nothing in this Agreement shall create an employment, partnership, agency, or joint venture relationship. The Contributor is an independent collaborator, not an employee or agent of the Company.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-money-bill-wave section-icon"></i><strong>10. Compensation & Revenue-Based Remuneration</strong></p>
+                   <p>NOTE: No Payment at This Stage. Compensation may be considered after full development and commercial success, subject to written agreement. Acknowledgment (Initial): <input type="text" placeholder="Your initials" class="form-control mb-2" style="width: 160px;"></p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-calendar-days section-icon"></i><strong>11. Term & Termination</strong></p>
+                   <p>This Agreement remains in effect until terminated by either party upon written notice. Sections relating to intellectual property, confidentiality, and warranties shall survive termination.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-shield-virus section-icon"></i><strong>12. Liability Limitations</strong></p>
+                   <p>The Company shall not be liable for any indirect, incidental, or consequential damages arising from the Contributor’s participation. Contributors participate at their own risk and are responsible for adherence to laws and policies.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-gavel section-icon"></i><strong>13. Indemnification</strong></p>
+                   <p>The Contributor agrees to indemnify and hold harmless the Company against claims, damages, or losses arising from breach of this Agreement, infringement of third-party rights, or illegal contributions.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-hand-holding-hand section-icon"></i><strong>14. Dispute Resolution</strong></p>
+                   <p>Any dispute arising shall first be attempted through good faith negotiation. If unresolved, disputes shall be submitted to binding arbitration under the laws of England and Wales.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-landmark section-icon"></i><strong>15. Governing Law & Jurisdiction</strong></p>
+                   <p>This Agreement is governed by the laws of England and Wales, and courts of England and Wales shall have exclusive jurisdiction.</p>
+               </div>
+
+               <div class="section-card">
+                   <p><i class="fa-solid fa-file-contract section-icon"></i><strong>16. Entire Agreement & Amendments</strong></p>
+                   <p>This Agreement constitutes the entire agreement between parties. Amendments must be in writing and signed by both parties. No oral statements, prior agreements, or understandings shall have any effect.</p>
+               </div>
+
            </div>
 
-           <div class="section-card">
-               <p><i class="fa-solid fa-bullseye section-icon"></i><strong>2. Purpose</strong></p>
-               <p>The Contributor may access Confidential Information solely for evaluating, developing, testing, or contributing to the StaffLinks platform. The purpose includes improving platform functionality, debugging, user experience enhancement, and feature development.</p>
-           </div>
+           <h3 class="mt-4">Acceptance & Signature</h3>
+           <form id="agreementForm" action="submit_agreement.php" method="POST">
+               <div class="row mb-3">
+                   <div class="col-md-6 mb-3">
+                       <label for="name" class="form-label"><i class="fa-solid fa-user"></i> Name</label>
+                       <input type="text" class="form-control" id="name" name="name" required>
+                   </div>
+                   <div class="col-md-6 mb-3">
+                       <label for="role" class="form-label"><i class="fa-solid fa-briefcase"></i> Role / Company</label>
+                       <input type="text" class="form-control" id="role" name="role" required>
+                   </div>
+               </div>
 
-           <div class="section-card">
-               <p><i class="fa-solid fa-shield-halved section-icon"></i><strong>3. Representations & Warranties</strong></p>
-               <ul>
-                   <li>The Contributor represents that all contributions are original, free from any third-party rights, and created independently unless otherwise disclosed.</li>
-                   <li>The Contributor has full legal authority to enter this Agreement and assign intellectual property rights to the Company.</li>
-                   <li>The Contributor warrants that no contributions violate any laws, regulations, or contractual obligations.</li>
-               </ul>
-           </div>
+               <div class="mb-3">
+                   <label class="form-label"><i class="fa-solid fa-pen-fancy"></i> Signature</label>
+                   <canvas id="signaturePad"></canvas>
+                   <button type="button" class="btn btn-warning btn-clear mt-2" id="clearBtn"><i class="fa-solid fa-eraser"></i> Clear</button>
+               </div>
 
-           <div class="section-card">
-               <p><i class="fa-solid fa-lock section-icon"></i><strong>4. Confidentiality Obligations</strong></p>
-               <ul>
-                   <li>Keep all Confidential Information strictly confidential.</li>
-                   <li>Use information solely for authorized project purposes.</li>
-                   <li>Prevent unauthorized access, sharing, duplication, or use for personal gain.</li>
-                   <li>Immediately report any suspected breaches or unauthorized disclosures.</li>
-               </ul>
-           </div>
+               <div class="mb-3">
+                   <label for="date" class="form-label"><i class="fa-solid fa-calendar"></i> Date</label>
+                   <input type="date" class="form-control" id="date" name="date" required value="<?php echo date('Y-m-d'); ?>">
+               </div>
 
-           <div class="section-card">
-               <p><i class="fa-solid fa-exclamation-triangle section-icon"></i><strong>5. Confidentiality Exceptions</strong></p>
-               <ul>
-                   <li>(a) Information already public without breach.</li>
-                   <li>(b) Lawfully obtained from a third party without obligation of confidentiality.</li>
-                   <li>(c) Independently developed without using Company’s Confidential Information.</li>
-                   <li>(d) Required to be disclosed by law, regulation, or court order.</li>
-               </ul>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-lightbulb section-icon"></i><strong>6. Intellectual Property Assignment</strong></p>
-               <p>The Contributor irrevocably assigns to EseSphere Limited all rights, title, and interest in any work product, code, design, invention, documentation, or other contributions created in connection with the StaffLinks Project, whether individually or jointly.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-code section-icon"></i><strong>7. GitHub & Code Contributions</strong></p>
-               <p>All code contributions submitted through repositories such as GitHub, GitLab, Bitbucket, or other platforms are considered "work made for hire" and are the exclusive property of EseSphere Limited, regardless of repository ownership or username.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-user-check section-icon"></i><strong>8. Founder, Equity & Ownership Disclaimer</strong></p>
-               <p>Participation or contribution to the project does not grant founder status, equity, shares, voting rights, or ownership interest unless explicitly documented in a separate written agreement.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-handshake section-icon"></i><strong>9. No Partnership or Employment</strong></p>
-               <p>Nothing in this Agreement shall create an employment, partnership, agency, or joint venture relationship. The Contributor is an independent collaborator, not an employee or agent of the Company.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-money-bill-wave section-icon"></i><strong>10. Compensation & Revenue-Based Remuneration</strong></p>
-               <p>NOTE: No Payment at This Stage. Compensation may be considered after full development and commercial success, subject to written agreement. Acknowledgment (Initial): <input type="text" placeholder="Your initials" class="form-control mb-2" style="width: 160px;"></p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-calendar-days section-icon"></i><strong>11. Term & Termination</strong></p>
-               <p>This Agreement remains in effect until terminated by either party upon written notice. Sections relating to intellectual property, confidentiality, and warranties shall survive termination.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-shield-virus section-icon"></i><strong>12. Liability Limitations</strong></p>
-               <p>The Company shall not be liable for any indirect, incidental, or consequential damages arising from the Contributor’s participation. Contributors participate at their own risk and are responsible for adherence to laws and policies.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-gavel section-icon"></i><strong>13. Indemnification</strong></p>
-               <p>The Contributor agrees to indemnify and hold harmless the Company against claims, damages, or losses arising from breach of this Agreement, infringement of third-party rights, or illegal contributions.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-hand-holding-hand section-icon"></i><strong>14. Dispute Resolution</strong></p>
-               <p>Any dispute arising shall first be attempted through good faith negotiation. If unresolved, disputes shall be submitted to binding arbitration under the laws of England and Wales.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-landmark section-icon"></i><strong>15. Governing Law & Jurisdiction</strong></p>
-               <p>This Agreement is governed by the laws of England and Wales, and courts of England and Wales shall have exclusive jurisdiction.</p>
-           </div>
-
-           <div class="section-card">
-               <p><i class="fa-solid fa-file-contract section-icon"></i><strong>16. Entire Agreement & Amendments</strong></p>
-               <p>This Agreement constitutes the entire agreement between parties. Amendments must be in writing and signed by both parties. No oral statements, prior agreements, or understandings shall have any effect.</p>
-           </div>
-
+               <div class="d-flex gap-2">
+                   <button type="submit" class="btn btn-primary submit-btn">
+                       <i class="fa-solid fa-paper-plane"></i> Submit Agreement
+                   </button>
+                   <button type="reset" class="btn btn-secondary" id="resetBtn">
+                       <i class="fa-solid fa-rotate-left"></i> Reset Form
+                   </button>
+               </div>
+           </form>
        </div>
-
-       <h3 class="mt-4">Acceptance & Signature</h3>
-       <form id="agreementForm" action="submit_agreement.php" method="POST">
-           <div class="row mb-3">
-               <div class="col-md-6 mb-3">
-                   <label for="name" class="form-label"><i class="fa-solid fa-user"></i> Name</label>
-                   <input type="text" class="form-control" id="name" name="name" required>
-               </div>
-               <div class="col-md-6 mb-3">
-                   <label for="role" class="form-label"><i class="fa-solid fa-briefcase"></i> Role / Company</label>
-                   <input type="text" class="form-control" id="role" name="role" required>
-               </div>
-           </div>
-
-           <div class="mb-3">
-               <label class="form-label"><i class="fa-solid fa-pen-fancy"></i> Signature</label>
-               <canvas id="signaturePad"></canvas>
-               <button type="button" class="btn btn-warning btn-clear mt-2" id="clearBtn"><i class="fa-solid fa-eraser"></i> Clear</button>
-           </div>
-
-           <div class="mb-3">
-               <label for="date" class="form-label"><i class="fa-solid fa-calendar"></i> Date</label>
-               <input type="date" class="form-control" id="date" name="date" required value="<?php echo date('Y-m-d'); ?>">
-           </div>
-
-           <div class="d-flex gap-2">
-               <button type="submit" class="btn btn-primary submit-btn">
-                   <i class="fa-solid fa-paper-plane"></i> Submit Agreement
-               </button>
-               <button type="reset" class="btn btn-secondary" id="resetBtn">
-                   <i class="fa-solid fa-rotate-left"></i> Reset Form
-               </button>
-           </div>
-       </form>
-   </div>
    </div>
 
    <script>
