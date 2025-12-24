@@ -1,8 +1,7 @@
 <?php
-require_once('tcpdf/tcpdf.php'); // Include TCPDF
+require_once('tcpdf/tcpdf.php');
 
 // Database credentials
-//submit_agreement.php
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -18,14 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $signatureData = $_POST['signature'];
 
-    // Save signature image
-    $signatureData = str_replace('data:image/png;base64,', '', $signatureData);
+    // Save signature as JPEG
+    $signatureData = str_replace('data:image/jpeg;base64,', '', $signatureData);
     $signatureData = str_replace(' ', '+', $signatureData);
-
     $signatureDir = 'signatures/';
     if (!is_dir($signatureDir)) mkdir($signatureDir, 0755, true);
-
-    $fileName = $signatureDir . 'signature_' . time() . '.png';
+    $fileName = $signatureDir . 'signature_' . time() . '.jpg';
     file_put_contents($fileName, base64_decode($signatureData));
 
     // Insert into database
@@ -44,11 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetAutoPageBreak(TRUE, 20);
     $pdf->AddPage();
 
-    // Set colors
-    $pdf->SetTextColor(0, 31, 77); // Navy blue for headings
+    $pdf->SetTextColor(0, 31, 77); // Navy blue headings
     $pdf->SetDrawColor(0, 31, 77);
 
-    // Build HTML with all 16 sections
     $html = '
     <h1 style="text-align:center;color:#001f4d;">Contributor Confidentiality & IP Agreement</h1>
     <p><strong>Company:</strong> EseSphere Limited</p>
@@ -90,7 +85,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdf->writeHTML($html, true, false, true, false, '');
     $pdfFileName = 'Contributor_Agreement_' . time() . '.pdf';
-
-    // Force download
-    $pdf->Output($pdfFileName, 'D');
+    $pdf->Output($pdfFileName, 'D'); // Forces download
 }
