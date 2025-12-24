@@ -6,19 +6,19 @@
     <title>Contributor Confidentiality & IP Agreement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
         body {
-            font-family: "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: #eef1f5;
-            margin: 0;
-            padding: 30px 15px;
-            color: #1f2937;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef1f5;
+            padding: 20px;
         }
 
         .container {
             max-width: 960px;
+            background: #fff;
             margin: auto;
-            background: #ffffff;
             padding: 50px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -26,49 +26,31 @@
 
         h1 {
             text-align: center;
-            font-size: 28px;
             margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 20px;
-            margin-top: 40px;
+            margin-top: 35px;
             border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         p,
         li {
-            font-size: 15px;
             line-height: 1.7;
-        }
-
-        ul {
-            margin-left: 20px;
-        }
-
-        .meta {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        .section {
-            margin-bottom: 25px;
+            font-size: 15px;
         }
 
         label {
             font-weight: 600;
-            margin-bottom: 6px;
             display: block;
+            margin-top: 15px;
         }
 
-        input,
-        textarea {
+        input {
             width: 100%;
             padding: 12px;
-            font-size: 14px;
+            margin-top: 6px;
             border-radius: 6px;
             border: 1px solid #cbd5e1;
         }
@@ -79,34 +61,34 @@
             margin-top: 15px;
         }
 
-        .signature-box {
+        canvas {
             border: 2px dashed #9ca3af;
-            height: 130px;
             border-radius: 6px;
             background: #f9fafb;
+            margin-top: 10px;
         }
 
-        .btn {
+        button {
+            margin-top: 30px;
             background: #1d4ed8;
-            color: #ffffff;
+            color: #fff;
             padding: 16px;
             width: 100%;
             border: none;
             border-radius: 8px;
             font-size: 16px;
-            margin-top: 30px;
             cursor: pointer;
         }
 
-        .btn:hover {
+        button:hover {
             background: #1e40af;
         }
 
         .footer {
             margin-top: 40px;
+            text-align: center;
             font-size: 12px;
             color: #6b7280;
-            text-align: center;
         }
     </style>
 </head>
@@ -116,144 +98,130 @@
     <div class="container">
 
         <h1>Contributor Confidentiality & Intellectual Property Agreement</h1>
+        <p><strong>Company:</strong> EseSphere Limited</p>
+        <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
+        <p><strong>Effective Date:</strong> 22 December 2025</p>
 
-        <div class="meta">
-            <p><strong>Company:</strong> EseSphere Limited</p>
-            <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
-            <p><strong>Effective Date:</strong> 22 December 2025</p>
-        </div>
-
-        <h2>1. Definitions</h2>
+        <h2>Agreement Terms</h2>
         <p>
-            “Confidential Information” includes all non-public business, technical,
-            financial, operational, and proprietary information disclosed in any form.
-        </p>
-        <p>
-            “Contribution” means any software, source code, designs, documentation,
-            inventions, discoveries, or materials created by the Contributor.
+            This Agreement governs all contributions, intellectual property rights,
+            confidential information, and participation by the Contributor in the StaffLinks
+            platform operated by EseSphere Limited.
         </p>
 
-        <h2>2. Purpose</h2>
-        <p>
-            The Contributor is granted limited access to Confidential Information solely
-            for the purpose of evaluating, developing, testing, or contributing to the
-            StaffLinks platform.
+        <p><strong>Key Legal Acknowledgement:</strong>
+            By signing below, the Contributor irrevocably assigns all intellectual property,
+            waives moral rights, agrees to confidentiality obligations, and acknowledges
+            that no payment is provided at this stage.
         </p>
 
-        <h2>3. Contributor Representations</h2>
-        <ul>
-            <li>All Contributions are original and lawfully created.</li>
-            <li>No Contribution infringes intellectual property or legal rights of third parties.</li>
-            <li>The Contributor has full legal capacity to enter this Agreement.</li>
-        </ul>
-
-        <h2>4. Confidentiality Obligations</h2>
-        <ul>
-            <li>Maintain Confidential Information in strict confidence.</li>
-            <li>Use Confidential Information only for authorised purposes.</li>
-            <li>Apply reasonable security measures to prevent unauthorised disclosure.</li>
-        </ul>
-
-        <h2>5. Confidentiality Exceptions</h2>
-        <p>
-            Confidential Information does not include information that is publicly available,
-            lawfully received from third parties, independently developed, or required to
-            be disclosed by law.
-        </p>
-
-        <h2>6. Intellectual Property Assignment</h2>
-        <p>
-            The Contributor irrevocably assigns to EseSphere Limited all rights, title,
-            and interest in all Contributions worldwide, including copyrights,
-            patents, trade secrets, and derivative works.
-        </p>
-
-        <h2>7. Moral Rights Waiver</h2>
-        <p>
-            The Contributor waives all moral rights in Contributions to the extent
-            permitted by law, including the right to be identified as author.
-        </p>
-
-        <h2>8. GitHub & Repository Contributions</h2>
-        <p>
-            All Contributions made through GitHub, GitLab, Bitbucket, or similar repositories
-            are deemed “work made for hire” and remain the exclusive property of EseSphere Limited.
-        </p>
-
-        <h2>9. No Ownership, Equity, or Founder Status</h2>
-        <p>
-            This Agreement does not grant any equity, shares, voting rights, or ownership
-            interest unless expressly agreed in writing.
-        </p>
-
-        <h2>10. Compensation Disclaimer</h2>
-        <p>
-            The Contributor acknowledges that no payment or remuneration is provided at
-            this stage of development.
-        </p>
-
+        <h2>Compensation Disclaimer</h2>
         <div class="checkbox">
             <input type="checkbox" required>
-            <label>I fully understand and accept that no payment is provided at this stage.</label>
+            <label>I understand and accept that no payment is provided at this stage.</label>
         </div>
 
-        <h2>11. Independent Contractor Status</h2>
-        <p>
-            Nothing in this Agreement creates an employment, partnership, agency,
-            or joint venture relationship.
-        </p>
+        <h2>Contributor Details</h2>
 
-        <h2>12. Data Protection & GDPR</h2>
-        <p>
-            The Contributor agrees to comply with all applicable data protection laws,
-            including the UK GDPR and Data Protection Act 2018.
-        </p>
+        <form method="POST" action="submit_agreement.php" onsubmit="return submitAgreement();">
 
-        <h2>13. Limitation of Liability</h2>
-        <p>
-            EseSphere Limited shall not be liable for indirect or consequential damages.
-            Participation is at the Contributor’s own risk.
-        </p>
+            <label>Full Legal Name</label>
+            <input type="text" id="full_name" name="full_name" required>
 
-        <h2>14. Indemnification</h2>
-        <p>
-            The Contributor agrees to indemnify and hold harmless the Company against
-            any claims arising from breach of this Agreement.
-        </p>
+            <label>Email Address</label>
+            <input type="email" id="email" name="email" required>
 
-        <h2>15. Governing Law & Dispute Resolution</h2>
-        <p>
-            This Agreement is governed by the laws of England and Wales.
-            Any dispute shall be resolved by binding arbitration.
-        </p>
+            <label>Role / Company</label>
+            <input type="text" id="role" name="role">
 
-        <h2>16. Electronic Execution</h2>
-        <p>
-            This Agreement may be executed electronically and shall have the same
-            legal effect as a handwritten signature.
-        </p>
+            <label>Date</label>
+            <input type="date" id="date" name="date" required>
 
-        <h2>Acceptance & Digital Signature</h2>
+            <label>Signature</label>
+            <canvas id="signaturePad" width="500" height="150"></canvas>
+            <button type="button" onclick="clearSignature()">Clear Signature</button>
 
-        <label>Full Legal Name</label>
-        <input type="text" required>
+            <input type="hidden" name="signature_image" id="signature_image">
+            <input type="hidden" name="pdf_data" id="pdf_data">
 
-        <label>Role / Company</label>
-        <input type="text">
-
-        <label>Date</label>
-        <input type="date" required>
-
-        <label>Signature</label>
-        <div class="signature-box"></div>
-
-        <button class="btn">Accept & Sign Agreement</button>
+            <button type="submit">Accept & Sign Agreement</button>
+        </form>
 
         <div class="footer">
-            © EseSphere Limited. This agreement is legally binding upon submission.
+            © EseSphere Limited — Electronic execution legally binding
         </div>
 
     </div>
+
+    <script>
+        const canvas = document.getElementById("signaturePad");
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        // Mouse
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => {
+            drawing = false;
+            ctx.beginPath();
+        });
+        canvas.addEventListener("mousemove", draw);
+
+        // Touch
+        canvas.addEventListener("touchstart", e => {
+            drawing = true;
+            drawTouch(e);
+        });
+        canvas.addEventListener("touchend", () => {
+            drawing = false;
+            ctx.beginPath();
+        });
+        canvas.addEventListener("touchmove", drawTouch);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "#111827";
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        }
+
+        function drawTouch(e) {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            draw({
+                offsetX: touch.clientX - rect.left,
+                offsetY: touch.clientY - rect.top
+            });
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        async function submitAgreement() {
+            const signature = canvas.toDataURL("image/png");
+            document.getElementById("signature_image").value = signature;
+
+            const {
+                jsPDF
+            } = window.jspdf;
+            const pdf = new jsPDF();
+            pdf.text("EseSphere Limited – Contributor Agreement", 20, 20);
+            pdf.text(`Name: ${full_name.value}`, 20, 40);
+            pdf.text(`Email: ${email.value}`, 20, 48);
+            pdf.text(`Role: ${role.value}`, 20, 56);
+            pdf.text(`Date: ${date.value}`, 20, 64);
+            pdf.text("Signature:", 20, 80);
+            pdf.addImage(signature, "PNG", 20, 85, 80, 30);
+
+            document.getElementById("pdf_data").value = pdf.output("datauristring");
+            return true;
+        }
+    </script>
 
 </body>
 
