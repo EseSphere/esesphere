@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 
-    // TCPDF PDF
+    // Generate TCPDF PDF
     $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $pdf->SetCreator('EseSphere Limited');
     $pdf->SetAuthor('EseSphere Limited');
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdf->SetFont('helvetica', '', 11);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->MultiCell(0, 5, "Company: EseSphere Limited\nProject: StaffLinks – Simplify. Organize. Thrive\nEffective Date: 22 December 2025", 0, 'L');
+    $pdf->MultiCell(0, 5, "Company: EseSphere Limited\nProject: StaffLinks – Simplify. Organize. Thrive\nEffective Date: " . date('d F Y'), 0, 'L');
     $pdf->Ln(5);
 
     // Contributor Details
@@ -103,10 +103,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->MultiCell(0, 5, "By signing below, the contributor acknowledges and agrees to all terms of this Agreement.", 0, 'L', false);
     $pdf->Ln(3);
-    $pdf->Image($fileName, '', '', 60, 30); // Proper scaling
+    $pdf->Image($fileName, '', '', 60, 30);
     $pdf->Ln(5);
     $pdf->MultiCell(0, 5, "Date: $date", 0, 'L', false);
 
     $pdfFileName = 'Contributor_Agreement_' . time() . '.pdf';
-    $pdf->Output($pdfFileName, 'D'); // Download
+    $pdfOutput = $pdf->Output('', 'S'); // Save PDF as string
+
+    // Send PDF via email using mail()
+    $to = 'info@esesphere.com';
+    $subject = 'New Contributor Agreement Submitted';
+    $message = "A new contributor agreement has been submitted.\n\nName: $name\nRole: $role\nDate: $date";
+    $separator = md5(time());
+    $eol = "\r\n";
+
+    // Email headers
+    $headers  = "From: noreply@esesphere.com" . $eol;
+    $headers .= "MIME-Version: 1.0" . $eol;
+    $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"" . $eol . $eol;
+
+    // Email body with attachment
+    $body = "--" . $separator . $eol;
+    $body .= "Content-Type: text/plain; charset=\"utf-8\"" . $eol;
+    $body .= "Content-Transfer-Encoding: 7bit" . $eol . $eol;
+    $body .= $message . $eol;
+
+    $body .= "--" . $separator . $eol;
+    $body .= "Content-Type: application/pdf; name=\"" . $pdfFileName . "\"" . $eol;
+    $body .= "Content-Transfer-Encoding: base64" . $eol;
+    $body .= "Content-Disposition: attachment; filename=\"" . $pdfFileName . "\"" . $eol . $eol;
+    $body .= chunk_split(base64_encode($pdfOutput)) . $eol;
+    $body .= "--" . $separator . "--";
+
+    mail($to, $subject, $body, $headers);
+
+    // Force download for contributor
+    $pdf->Output($pdfFileName, 'D');
 }
