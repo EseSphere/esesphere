@@ -239,7 +239,14 @@
                    <input type="date" class="form-control" id="date" name="date" required value="<?php echo date('Y-m-d'); ?>">
                </div>
 
-               <button type="submit" class="btn btn-primary submit-btn w-100"><i class="fa-solid fa-paper-plane"></i> Submit Agreement</button>
+               <div class="d-flex gap-2">
+                   <button type="submit" class="btn btn-primary submit-btn flex-fill">
+                       <i class="fa-solid fa-paper-plane"></i> Submit Agreement
+                   </button>
+                   <button type="reset" class="btn btn-secondary flex-fill" id="resetBtn">
+                       <i class="fa-solid fa-rotate-left"></i> Reset Form
+                   </button>
+               </div>
            </form>
        </div>
    </div>
