@@ -1,13 +1,6 @@
 <?php
 require_once('tcpdf/tcpdf.php');
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "esesphere";
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
+require_once('dbconnection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $conn->real_escape_string($_POST['name']);
