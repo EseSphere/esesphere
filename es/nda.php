@@ -374,28 +374,50 @@
 
         <h2>Acceptance & Signature</h2>
 
-        <form method="POST" action="submit_agreement.php" onsubmit="return submitAgreement();">
+        <form method="POST" action="submit_agreement.php" onsubmit="return submitAgreement();" class="signature-form">
 
-            <label>Full Name</label>
-            <input type="text" name="full_name" id="full_name" required>
+            <h3 class="form-title">Contributor Details & Acceptance</h3>
+            <p class="form-subtitle">Complete the details below and sign electronically to accept this agreement.</p>
 
-            <label>Email Address</label>
-            <input type="email" name="email" id="email" required>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Full Legal Name</label>
+                    <input type="text" name="full_name" id="full_name" placeholder="e.g. John Michael Smith" required>
+                </div>
 
-            <label>Role / Company</label>
-            <input type="text" name="role" id="role">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="you@example.com" required>
+                </div>
 
-            <label>Date</label>
-            <input type="date" name="date" id="date" required>
+                <div class="form-group">
+                    <label>Role / Company</label>
+                    <input type="text" name="role" id="role" placeholder="e.g. Frontend Developer / ABC Ltd">
+                </div>
 
-            <label>Signature</label>
-            <canvas id="signaturePad" width="500" height="150"></canvas>
-            <button type="button" onclick="clearSignature()">Clear Signature</button>
+                <div class="form-group">
+                    <label>Date of Acceptance</label>
+                    <input type="date" name="date" id="date" required>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-header">
+                    <span>Electronic Signature</span>
+                    <button type="button" class="clear-btn" onclick="clearSignature()">Clear</button>
+                </div>
+                <canvas id="signaturePad" width="600" height="160"></canvas>
+                <p class="signature-hint">Draw your signature above using your mouse, trackpad, or touch screen.</p>
+            </div>
 
             <input type="hidden" name="signature_image" id="signature_image">
             <input type="hidden" name="pdf_data" id="pdf_data">
 
-            <button type="submit">Accept & Sign Agreement</button>
+            <button type="button" class="preview-btn" onclick="openPreview()">📄 Preview Agreement</button>
+            <button type="submit" class="primary-btn" id="signBtn">✔ Accept & Sign Agreement</button>
+
+            <p class="legal-note">By clicking “Accept & Sign Agreement”, you confirm that you have read, understood, and legally agree to the terms of this agreement.</p>
+
         </form>
 
         <div class="footer">
@@ -404,10 +426,29 @@
 
     </div>
 
+    <!-- Agreement Preview Modal -->
+    <div id="agreementModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Agreement Preview</span>
+                <button onclick="closePreview()">✕</button>
+            </div>
+            <iframe src="agreement.html"></iframe>
+        </div>
+    </div>
+
     <script>
         const canvas = document.getElementById("signaturePad");
         const ctx = canvas.getContext("2d");
         let drawing = false;
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("date");
+            if (dateInput && !dateInput.value) {
+                const today = new Date().toISOString().split("T")[0];
+                dateInput.value = today;
+            }
+        });
 
         canvas.addEventListener("mousedown", () => drawing = true);
         canvas.addEventListener("mouseup", () => {
@@ -415,7 +456,6 @@
             ctx.beginPath();
         });
         canvas.addEventListener("mousemove", draw);
-
         canvas.addEventListener("touchstart", e => {
             drawing = true;
             drawTouch(e);
@@ -428,9 +468,11 @@
 
         function draw(e) {
             if (!drawing) return;
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 2.5;
             ctx.lineCap = "round";
-            ctx.strokeStyle = "#111827";
+            ctx.strokeStyle = "#2563eb";
+            ctx.shadowColor = "rgba(37, 99, 235, 0.6)";
+            ctx.shadowBlur = 8;
             ctx.lineTo(e.offsetX, e.offsetY);
             ctx.stroke();
             ctx.beginPath();
@@ -451,7 +493,20 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
 
+        function openPreview() {
+            document.getElementById("agreementModal").style.display = "block";
+        }
+
+        function closePreview() {
+            document.getElementById("agreementModal").style.display = "none";
+        }
+
         async function submitAgreement() {
+            const btn = document.getElementById("signBtn");
+            btn.disabled = true;
+            btn.innerHTML = "⏳ Signing Agreement...";
+            btn.style.opacity = "0.8";
+
             const signature = canvas.toDataURL("image/png");
             document.getElementById("signature_image").value = signature;
 
@@ -467,6 +522,14 @@
             pdf.addImage(signature, "PNG", 20, 78, 80, 30);
 
             document.getElementById("pdf_data").value = pdf.output("datauristring");
+
+            // Reset button in case of failure after 15s
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = "✔ Accept & Sign Agreement";
+                btn.style.opacity = "1";
+            }, 15000);
+
             return true;
         }
     </script>
