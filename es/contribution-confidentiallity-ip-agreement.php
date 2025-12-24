@@ -236,7 +236,7 @@
 
                <div class="mb-3">
                    <label for="date" class="form-label"><i class="fa-solid fa-calendar"></i> Date</label>
-                   <input type="date" value="<?php echo date(); ?>" class="form-control" id="date" name="date" required>
+                   <input type="date" class="form-control" id="date" name="date" required value="<?php echo date('Y-m-d'); ?>">
                </div>
 
                <button type="submit" class="btn btn-primary submit-btn w-100"><i class="fa-solid fa-paper-plane"></i> Submit Agreement</button>
