@@ -1,18 +1,12 @@
    <?php include('header.php'); ?>
    <style>
-       body {
-           background-color: #e8ebf3;
-           font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           padding: 40px 0;
-       }
-
        .agreement-card {
            background-color: #fff;
            border-radius: 15px;
            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
            padding: 40px;
            max-width: 1000px;
-           margin: auto;
+           margin: 130px auto;
        }
 
        h1 {
