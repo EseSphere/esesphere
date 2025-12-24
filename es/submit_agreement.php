@@ -1,13 +1,11 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 
-// Database credentials
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db   = "esesphere";
 
-// Create connection
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
@@ -17,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $signatureData = $_POST['signature'];
 
-    // Save signature as JPEG
+    // Save signature as flattened JPEG
     $signatureData = str_replace('data:image/jpeg;base64,', '', $signatureData);
     $signatureData = str_replace(' ', '+', $signatureData);
     $signatureDir = 'signatures/';
@@ -32,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 
-    // TCPDF initialization
+    // TCPDF PDF
     $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $pdf->SetCreator('EseSphere Limited');
     $pdf->SetAuthor('EseSphere Limited');
@@ -41,46 +39,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetAutoPageBreak(TRUE, 20);
     $pdf->AddPage();
 
-    // Fonts and colors
-    $pdf->SetFont('helvetica', '', 11);
-    $headingColor = [0, 31, 77]; // Navy blue
+    $headingColor = [0, 31, 77];
     $borderColor = [0, 31, 77];
 
-    // Title
-    $pdf->SetTextColor(...$headingColor);
     $pdf->SetFont('helvetica', 'B', 16);
+    $pdf->SetTextColor(...$headingColor);
     $pdf->Cell(0, 10, 'Contributor Confidentiality & IP Agreement', 0, 1, 'C');
-
     $pdf->Ln(3);
+
     $pdf->SetFont('helvetica', '', 11);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->MultiCell(0, 5, "Company: EseSphere Limited\nProject: StaffLinks – Simplify. Organize. Thrive\nEffective Date: 22 December 2025", 0, 'L', false);
+    $pdf->MultiCell(0, 5, "Company: EseSphere Limited\nProject: StaffLinks – Simplify. Organize. Thrive\nEffective Date: 22 December 2025", 0, 'L');
     $pdf->Ln(5);
 
-    // Contributor Details Box
-    $pdf->SetTextColor(...$headingColor);
+    // Contributor Details
     $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->SetTextColor(...$headingColor);
     $pdf->Cell(0, 7, 'Contributor Details', 0, 1);
-    $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('helvetica', '', 11);
+    $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFillColor(224, 235, 255);
     $pdf->SetDrawColor(...$borderColor);
     $pdf->MultiCell(0, 6, "Name: $name\nRole / Company: $role\nDate: $date", 1, 'L', true);
     $pdf->Ln(5);
 
-    // Agreement Sections
+    // Agreement sections
     $sections = [
-        "Definitions & Interpretation" => "Confidential Information, Contribution, Project, and Company Materials are as defined in the web agreement.",
+        "Definitions & Interpretation" => "Confidential Information, Contribution, Project, and Company Materials as defined in the web agreement.",
         "Purpose" => "Access Confidential Information solely for evaluating, developing, testing, or contributing to StaffLinks platform.",
         "Representations & Warranties" => "All contributions are original, do not infringe third-party rights, and Contributor has authority to assign IP.",
         "Confidentiality Obligations" => "Maintain information in strict confidence, use for authorized purposes, prevent unauthorized access.",
-        "Confidentiality Exceptions" => "Information that is public, independently developed, lawfully obtained from third parties, or legally required disclosure.",
+        "Confidentiality Exceptions" => "Information that is public, independently developed, lawfully obtained, or legally required disclosure.",
         "Intellectual Property Assignment" => "All rights, title, and interest in work products are irrevocably assigned to EseSphere Limited.",
         "GitHub & Code Contributions" => "All repository contributions are work made for hire and exclusive property of the Company.",
-        "Founder, Equity & Ownership Disclaimer" => "Contributions do not confer founder status, equity, or ownership unless explicitly agreed in writing.",
+        "Founder, Equity & Ownership Disclaimer" => "Contributions do not confer founder status, equity, or ownership unless agreed in writing.",
         "No Partnership or Employment" => "Nothing creates employment, partnership, agency, or joint venture.",
         "Compensation & Revenue-Based Remuneration" => "No payment at this stage. Compensation may be considered after development and commercial success.",
-        "Term & Termination" => "Agreement remains effective until terminated by either party; IP and confidentiality sections survive termination.",
+        "Term & Termination" => "Agreement remains effective until terminated; IP and confidentiality sections survive termination.",
         "Liability Limitations" => "Company not liable for indirect, incidental, or consequential damages; participation at Contributor’s own risk.",
         "Indemnification" => "Contributor indemnifies the Company against claims, damages, or losses arising from breach or illegal contributions.",
         "Dispute Resolution" => "Attempt negotiation first; if unresolved, binding arbitration under laws of England and Wales.",
@@ -90,9 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdf->SetFont('helvetica', 'B', 12);
     $pdf->SetTextColor(...$headingColor);
-
+    $count = 0;
     foreach ($sections as $title => $content) {
-        // Section box
         $pdf->SetFillColor(224, 235, 255);
         $pdf->SetDrawColor(...$borderColor);
         $pdf->MultiCell(0, 6, $title, 1, 'L', true);
@@ -101,9 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdf->SetTextColor(0, 0, 0);
         $pdf->MultiCell(0, 5, $content, 1, 'L', false);
         $pdf->Ln(3);
-
-        // Add page break every 5 sections
-        static $count = 0;
         $count++;
         if ($count % 5 == 0) $pdf->AddPage();
         $pdf->SetFont('helvetica', 'B', 12);
@@ -119,10 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->MultiCell(0, 5, "By signing below, the contributor acknowledges and agrees to all terms of this Agreement.", 0, 'L', false);
     $pdf->Ln(3);
-    $pdf->Image($fileName, '', '', 60, 30); // Signature image
+    $pdf->Image($fileName, '', '', 60, 30); // Proper scaling
     $pdf->Ln(5);
     $pdf->MultiCell(0, 5, "Date: $date", 0, 'L', false);
 
     $pdfFileName = 'Contributor_Agreement_' . time() . '.pdf';
-    $pdf->Output($pdfFileName, 'D'); // Forces download
+    $pdf->Output($pdfFileName, 'D'); // Download
 }
