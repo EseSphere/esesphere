@@ -240,10 +240,10 @@
                </div>
 
                <div class="d-flex gap-2">
-                   <button type="submit" class="btn btn-primary submit-btn flex-fill">
+                   <button type="submit" class="btn btn-primary submit-btn">
                        <i class="fa-solid fa-paper-plane"></i> Submit Agreement
                    </button>
-                   <button type="reset" class="btn btn-secondary flex-fill" id="resetBtn">
+                   <button type="reset" class="btn btn-secondary" id="resetBtn">
                        <i class="fa-solid fa-rotate-left"></i> Reset Form
                    </button>
                </div>
