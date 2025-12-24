@@ -265,49 +265,91 @@
         const ctx = canvas.getContext('2d');
         let drawing = false;
 
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        // Set canvas size dynamically for high-DPI screens
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-        canvas.addEventListener('mousedown', () => drawing = true);
-        canvas.addEventListener('mouseup', () => drawing = false);
-        canvas.addEventListener('mouseout', () => drawing = false);
-        canvas.addEventListener('mousemove', draw);
+        // Start drawing
+        function startDrawing(x, y) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
 
-        function draw(e) {
+        // Draw line
+        function drawLine(x, y) {
             if (!drawing) return;
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
             ctx.strokeStyle = '#001f4d';
-            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.lineTo(x, y);
             ctx.stroke();
             ctx.beginPath();
-            ctx.moveTo(e.offsetX, e.offsetY);
+            ctx.moveTo(x, y);
         }
 
+        // Stop drawing
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        // Mouse events
+        canvas.addEventListener('mousedown', (e) => startDrawing(e.offsetX, e.offsetY));
+        canvas.addEventListener('mousemove', (e) => drawLine(e.offsetX, e.offsetY));
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Touch events
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            startDrawing(touch.clientX - rect.left, touch.clientY - rect.top);
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            drawLine(touch.clientX - rect.left, touch.clientY - rect.top);
+        });
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            stopDrawing();
+        });
+
+        // Clear button
         document.getElementById('clearBtn').addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         });
 
+        // Form submission
         document.getElementById('agreementForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const role = document.getElementById('role').value;
-            const date = document.getElementById('date').value;
             const signatureData = canvas.toDataURL();
 
-            if (signatureData === canvas.toDataURL('image/png', 0)) {
+            // Check if signature is empty
+            const blankCanvas = document.createElement('canvas');
+            blankCanvas.width = canvas.width;
+            blankCanvas.height = canvas.height;
+            if (signatureData === blankCanvas.toDataURL()) {
+                e.preventDefault();
                 alert('Please provide a signature.');
                 return;
             }
 
-            // Submit to server or handle as needed
-            console.log({
-                name,
-                role,
-                date,
-                signatureData
-            });
-            alert('Agreement submitted successfully!');
+            // Append hidden input for signature
+            let input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'signature';
+            input.value = signatureData;
+            this.appendChild(input);
+
+            // Form will now submit normally to PHP for PDF generation
         });
     </script>
 
