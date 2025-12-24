@@ -8,31 +8,86 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            padding: 20px;
-            background-color: #f8f9fa;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px 0;
         }
 
-        .agreement {
+        .agreement-card {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
         }
 
-        h1,
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0d6efd;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         h3 {
-            margin-bottom: 20px;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #343a40;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+        }
+
+        .agreement-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .agreement-content p,
+        .agreement-content li {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #495057;
         }
 
         canvas {
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
             width: 100%;
-            height: 150px;
+            height: 160px;
+            cursor: crosshair;
+            background-color: #f8f9fa;
         }
 
         .btn-clear {
-            margin-top: 10px;
+            margin-top: 8px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 6px;
+        }
+
+        .submit-btn {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .submit-btn:hover {
+            background-color: #0b5ed7;
+        }
+
+        @media (max-width: 576px) {
+            .agreement-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -40,15 +95,14 @@
 <body>
 
     <div class="container">
-        <div class="agreement">
-            <h1 class="text-center">Contributor Confidentiality & Intellectual Property Agreement</h1>
+        <div class="agreement-card">
+            <h1>Contributor Confidentiality & Intellectual Property Agreement</h1>
             <p><strong>Company:</strong> EseSphere Limited</p>
             <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
             <p><strong>Effective Date:</strong> 22 December 2025</p>
-            <hr>
 
             <h3>Agreement Details</h3>
-            <div style="max-height: 400px; overflow-y: auto; padding: 10px;">
+            <div class="agreement-content">
                 <p><strong>1. Definitions & Interpretation</strong></p>
                 <ul>
                     <li><strong>Confidential Information:</strong> All information disclosed to the Contributor that is not publicly available, including technical data, source code, business plans, and trade secrets.</li>
@@ -73,7 +127,6 @@
                 </ul>
 
                 <p><strong>5. Confidentiality Exceptions</strong></p>
-                <p>Confidential Information does not include information that:</p>
                 <ul>
                     <li>(a) is publicly available without breach;</li>
                     <li>(b) was lawfully obtained from a third party;</li>
@@ -115,27 +168,31 @@
                 <p>This Agreement constitutes the entire agreement. Amendments must be in writing and signed by both parties.</p>
             </div>
 
-            <hr>
             <h3>Acceptance & Signature</h3>
             <form id="agreementForm">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" required>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="role" class="form-label">Role / Company</label>
+                        <input type="text" class="form-control" id="role" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Role / Company</label>
-                    <input type="text" class="form-control" id="role" required>
-                </div>
+
                 <div class="mb-3">
                     <label class="form-label">Signature</label>
                     <canvas id="signaturePad"></canvas>
                     <button type="button" class="btn btn-warning btn-clear" id="clearBtn">Clear</button>
                 </div>
+
                 <div class="mb-3">
                     <label for="date" class="form-label">Date</label>
                     <input type="date" class="form-control" id="date" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Agreement</button>
+
+                <button type="submit" class="btn btn-primary submit-btn w-100">Submit Agreement</button>
             </form>
         </div>
     </div>
@@ -151,7 +208,6 @@
         canvas.addEventListener('mousedown', () => drawing = true);
         canvas.addEventListener('mouseup', () => drawing = false);
         canvas.addEventListener('mouseout', () => drawing = false);
-
         canvas.addEventListener('mousemove', draw);
 
         function draw(e) {
@@ -181,7 +237,7 @@
                 return;
             }
 
-            // Here you can send the data to your server using fetch/AJAX
+            // Replace this with server submission
             console.log({
                 name,
                 role,
