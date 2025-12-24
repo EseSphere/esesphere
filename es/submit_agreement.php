@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 
-    // Generate PDF
-    $pdf = new TCPDF();
+    // TCPDF initialization
+    $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $pdf->SetCreator('EseSphere Limited');
     $pdf->SetAuthor('EseSphere Limited');
     $pdf->SetTitle('Contributor Agreement');
@@ -41,49 +41,88 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetAutoPageBreak(TRUE, 20);
     $pdf->AddPage();
 
-    $pdf->SetTextColor(0, 31, 77); // Navy blue headings
-    $pdf->SetDrawColor(0, 31, 77);
+    // Fonts and colors
+    $pdf->SetFont('helvetica', '', 11);
+    $headingColor = [0, 31, 77]; // Navy blue
+    $borderColor = [0, 31, 77];
 
-    $html = '
-    <h1 style="text-align:center;color:#001f4d;">Contributor Confidentiality & IP Agreement</h1>
-    <p><strong>Company:</strong> EseSphere Limited</p>
-    <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
-    <p><strong>Effective Date:</strong> 22 December 2025</p>
+    // Title
+    $pdf->SetTextColor(...$headingColor);
+    $pdf->SetFont('helvetica', 'B', 16);
+    $pdf->Cell(0, 10, 'Contributor Confidentiality & IP Agreement', 0, 1, 'C');
 
-    <h2 style="color:#001f4d;">Contributor Details</h2>
-    <table cellpadding="5">
-        <tr><td><strong>Name:</strong></td><td>' . $name . '</td></tr>
-        <tr><td><strong>Role / Company:</strong></td><td>' . $role . '</td></tr>
-        <tr><td><strong>Date:</strong></td><td>' . $date . '</td></tr>
-    </table>
+    $pdf->Ln(3);
+    $pdf->SetFont('helvetica', '', 11);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->MultiCell(0, 5, "Company: EseSphere Limited\nProject: StaffLinks – Simplify. Organize. Thrive\nEffective Date: 22 December 2025", 0, 'L', false);
+    $pdf->Ln(5);
 
-    <h2 style="color:#001f4d;">Agreement Sections</h2>
-    <ol>
-        <li><strong>Definitions & Interpretation:</strong> Confidential Information, Contribution, Project, and Company Materials are as defined in the web agreement.</li>
-        <li><strong>Purpose:</strong> Access Confidential Information solely for evaluating, developing, testing, or contributing to StaffLinks platform.</li>
-        <li><strong>Representations & Warranties:</strong> All contributions are original, do not infringe third-party rights, and Contributor has authority to assign IP.</li>
-        <li><strong>Confidentiality Obligations:</strong> Maintain information in strict confidence, use for authorized purposes, prevent unauthorized access.</li>
-        <li><strong>Confidentiality Exceptions:</strong> Information that is public, independently developed, lawfully obtained from third parties, or legally required disclosure.</li>
-        <li><strong>Intellectual Property Assignment:</strong> All rights, title, and interest in work products are irrevocably assigned to EseSphere Limited.</li>
-        <li><strong>GitHub & Code Contributions:</strong> All repository contributions are work made for hire and exclusive property of the Company.</li>
-        <li><strong>Founder, Equity & Ownership Disclaimer:</strong> Contributions do not confer founder status, equity, or ownership unless explicitly agreed in writing.</li>
-        <li><strong>No Partnership or Employment:</strong> Nothing creates employment, partnership, agency, or joint venture.</li>
-        <li><strong>Compensation & Revenue-Based Remuneration:</strong> No payment at this stage. Compensation may be considered after development and commercial success.</li>
-        <li><strong>Term & Termination:</strong> Agreement remains effective until terminated by either party; IP and confidentiality sections survive termination.</li>
-        <li><strong>Liability Limitations:</strong> Company not liable for indirect, incidental, or consequential damages; participation at Contributor’s own risk.</li>
-        <li><strong>Indemnification:</strong> Contributor indemnifies the Company against claims, damages, or losses arising from breach or illegal contributions.</li>
-        <li><strong>Dispute Resolution:</strong> Attempt negotiation first; if unresolved, binding arbitration under laws of England and Wales.</li>
-        <li><strong>Governing Law & Jurisdiction:</strong> Laws of England and Wales apply; courts of England and Wales have exclusive jurisdiction.</li>
-        <li><strong>Entire Agreement & Amendments:</strong> Constitutes entire agreement; amendments must be in writing and signed by both parties.</li>
-    </ol>
+    // Contributor Details Box
+    $pdf->SetTextColor(...$headingColor);
+    $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->Cell(0, 7, 'Contributor Details', 0, 1);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('helvetica', '', 11);
+    $pdf->SetFillColor(224, 235, 255);
+    $pdf->SetDrawColor(...$borderColor);
+    $pdf->MultiCell(0, 6, "Name: $name\nRole / Company: $role\nDate: $date", 1, 'L', true);
+    $pdf->Ln(5);
 
-    <h2 style="color:#001f4d;">Signature</h2>
-    <p>Please find the contributor signature below:</p>
-    <p><img src="' . $fileName . '" width="300" height="100" /></p>
-    <p>By signing above, the contributor acknowledges and agrees to all terms of this Agreement.</p>
-    ';
+    // Agreement Sections
+    $sections = [
+        "Definitions & Interpretation" => "Confidential Information, Contribution, Project, and Company Materials are as defined in the web agreement.",
+        "Purpose" => "Access Confidential Information solely for evaluating, developing, testing, or contributing to StaffLinks platform.",
+        "Representations & Warranties" => "All contributions are original, do not infringe third-party rights, and Contributor has authority to assign IP.",
+        "Confidentiality Obligations" => "Maintain information in strict confidence, use for authorized purposes, prevent unauthorized access.",
+        "Confidentiality Exceptions" => "Information that is public, independently developed, lawfully obtained from third parties, or legally required disclosure.",
+        "Intellectual Property Assignment" => "All rights, title, and interest in work products are irrevocably assigned to EseSphere Limited.",
+        "GitHub & Code Contributions" => "All repository contributions are work made for hire and exclusive property of the Company.",
+        "Founder, Equity & Ownership Disclaimer" => "Contributions do not confer founder status, equity, or ownership unless explicitly agreed in writing.",
+        "No Partnership or Employment" => "Nothing creates employment, partnership, agency, or joint venture.",
+        "Compensation & Revenue-Based Remuneration" => "No payment at this stage. Compensation may be considered after development and commercial success.",
+        "Term & Termination" => "Agreement remains effective until terminated by either party; IP and confidentiality sections survive termination.",
+        "Liability Limitations" => "Company not liable for indirect, incidental, or consequential damages; participation at Contributor’s own risk.",
+        "Indemnification" => "Contributor indemnifies the Company against claims, damages, or losses arising from breach or illegal contributions.",
+        "Dispute Resolution" => "Attempt negotiation first; if unresolved, binding arbitration under laws of England and Wales.",
+        "Governing Law & Jurisdiction" => "Laws of England and Wales apply; courts of England and Wales have exclusive jurisdiction.",
+        "Entire Agreement & Amendments" => "Constitutes entire agreement; amendments must be in writing and signed by both parties."
+    ];
 
-    $pdf->writeHTML($html, true, false, true, false, '');
+    $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->SetTextColor(...$headingColor);
+
+    foreach ($sections as $title => $content) {
+        // Section box
+        $pdf->SetFillColor(224, 235, 255);
+        $pdf->SetDrawColor(...$borderColor);
+        $pdf->MultiCell(0, 6, $title, 1, 'L', true);
+        $pdf->Ln(1);
+        $pdf->SetFont('helvetica', '', 11);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->MultiCell(0, 5, $content, 1, 'L', false);
+        $pdf->Ln(3);
+
+        // Add page break every 5 sections
+        static $count = 0;
+        $count++;
+        if ($count % 5 == 0) $pdf->AddPage();
+        $pdf->SetFont('helvetica', 'B', 12);
+        $pdf->SetTextColor(...$headingColor);
+    }
+
+    // Signature
+    $pdf->Ln(5);
+    $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->SetTextColor(...$headingColor);
+    $pdf->Cell(0, 7, 'Contributor Signature', 0, 1);
+    $pdf->SetFont('helvetica', '', 11);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->MultiCell(0, 5, "By signing below, the contributor acknowledges and agrees to all terms of this Agreement.", 0, 'L', false);
+    $pdf->Ln(3);
+    $pdf->Image($fileName, '', '', 60, 30); // Signature image
+    $pdf->Ln(5);
+    $pdf->MultiCell(0, 5, "Date: $date", 0, 'L', false);
+
     $pdfFileName = 'Contributor_Agreement_' . time() . '.pdf';
     $pdf->Output($pdfFileName, 'D'); // Forces download
 }
