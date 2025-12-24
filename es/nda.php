@@ -326,19 +326,31 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         });
 
-        // Form submission
+        // Form submission with flattened JPEG
         document.getElementById('agreementForm').addEventListener('submit', function(e) {
-            const signatureData = canvas.toDataURL('image/jpeg', 1.0); // JPEG to avoid TCPDF transparency issues
+            // Flatten canvas to white background
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.fillStyle = "#ffffff";
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            tempCtx.drawImage(canvas, 0, 0);
 
+            const signatureData = tempCanvas.toDataURL('image/jpeg', 1.0);
+
+            // Check if signature is empty
             const blankCanvas = document.createElement('canvas');
             blankCanvas.width = canvas.width;
             blankCanvas.height = canvas.height;
-            if (signatureData === blankCanvas.toDataURL('image/jpeg', 1.0)) {
+            const blankData = blankCanvas.toDataURL('image/jpeg', 1.0);
+            if (signatureData === blankData) {
                 e.preventDefault();
                 alert('Please provide a signature.');
                 return;
             }
 
+            // Append hidden input
             let input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'signature';
