@@ -265,7 +265,7 @@
         const ctx = canvas.getContext('2d');
         let drawing = false;
 
-        // Set canvas size dynamically for high-DPI screens
+        // Resize canvas for high-DPI
         function resizeCanvas() {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
             canvas.width = canvas.offsetWidth * ratio;
@@ -275,14 +275,13 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Start drawing
+        // Drawing functions
         function startDrawing(x, y) {
             drawing = true;
             ctx.beginPath();
             ctx.moveTo(x, y);
         }
 
-        // Draw line
         function drawLine(x, y) {
             if (!drawing) return;
             ctx.lineWidth = 2;
@@ -294,7 +293,6 @@
             ctx.moveTo(x, y);
         }
 
-        // Stop drawing
         function stopDrawing() {
             drawing = false;
         }
@@ -330,26 +328,22 @@
 
         // Form submission
         document.getElementById('agreementForm').addEventListener('submit', function(e) {
-            const signatureData = canvas.toDataURL();
+            const signatureData = canvas.toDataURL('image/jpeg', 1.0); // JPEG to avoid TCPDF transparency issues
 
-            // Check if signature is empty
             const blankCanvas = document.createElement('canvas');
             blankCanvas.width = canvas.width;
             blankCanvas.height = canvas.height;
-            if (signatureData === blankCanvas.toDataURL()) {
+            if (signatureData === blankCanvas.toDataURL('image/jpeg', 1.0)) {
                 e.preventDefault();
                 alert('Please provide a signature.');
                 return;
             }
 
-            // Append hidden input for signature
             let input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'signature';
             input.value = signatureData;
             this.appendChild(input);
-
-            // Form will submit normally to submit_agreement.php
         });
     </script>
 
