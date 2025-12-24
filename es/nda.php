@@ -232,15 +232,15 @@
             </div>
 
             <h3 class="mt-4">Acceptance & Signature</h3>
-            <form id="agreementForm">
+            <form id="agreementForm" action="submit_agreement.php" method="POST">
                 <div class="row mb-3">
                     <div class="col-md-6 mb-3">
                         <label for="name" class="form-label"><i class="fa-solid fa-user"></i> Name</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="role" class="form-label"><i class="fa-solid fa-briefcase"></i> Role / Company</label>
-                        <input type="text" class="form-control" id="role" required>
+                        <input type="text" class="form-control" id="role" name="role" required>
                     </div>
                 </div>
 
@@ -252,7 +252,7 @@
 
                 <div class="mb-3">
                     <label for="date" class="form-label"><i class="fa-solid fa-calendar"></i> Date</label>
-                    <input type="date" class="form-control" id="date" required>
+                    <input type="date" class="form-control" id="date" name="date" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary submit-btn w-100"><i class="fa-solid fa-paper-plane"></i> Submit Agreement</button>
