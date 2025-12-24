@@ -349,7 +349,7 @@
             input.value = signatureData;
             this.appendChild(input);
 
-            // Form will now submit normally to PHP for PDF generation
+            // Form will submit normally to submit_agreement.php
         });
     </script>
 
