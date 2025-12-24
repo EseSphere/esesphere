@@ -109,7 +109,7 @@
            <h1><i class="fa-solid fa-file-signature"></i> Contributor Confidentiality & IP Agreement</h1>
            <p><strong>Company:</strong> EseSphere Limited</p>
            <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
-           <p><strong>Effective Date:</strong> 22 December 2025</p>
+           <p><strong>Effective Date:</strong> <?= date('d F Y'); ?></p>
 
            <h3>Agreement Details</h3>
            <div class="agreement-content">
