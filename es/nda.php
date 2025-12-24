@@ -5,101 +5,107 @@
     <meta charset="UTF-8">
     <title>Contributor Confidentiality & IP Agreement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #eef1f5;
             margin: 0;
-            padding: 20px;
+            padding: 30px 15px;
+            color: #1f2937;
         }
 
         .container {
-            max-width: 900px;
-            background: #fff;
-            padding: 30px;
+            max-width: 960px;
             margin: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
-        h1,
-        h2 {
+        h1 {
             text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         h2 {
+            font-size: 20px;
             margin-top: 40px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
         }
 
         p,
         li {
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.7;
         }
 
         ul {
             margin-left: 20px;
         }
 
+        .meta {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
         .section {
             margin-bottom: 25px;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
         label {
-            font-weight: bold;
-            display: block;
+            font-weight: 600;
             margin-bottom: 6px;
+            display: block;
         }
 
         input,
         textarea {
             width: 100%;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+            padding: 12px;
             font-size: 14px;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .signature {
-            border: 1px dashed #aaa;
-            height: 120px;
-            border-radius: 4px;
-            background: #fafafa;
-        }
-
-        .submit-btn {
-            background: #0d6efd;
-            color: #fff;
-            padding: 14px;
-            border: none;
-            width: 100%;
-            font-size: 16px;
             border-radius: 6px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .checkbox {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .signature-box {
+            border: 2px dashed #9ca3af;
+            height: 130px;
+            border-radius: 6px;
+            background: #f9fafb;
+        }
+
+        .btn {
+            background: #1d4ed8;
+            color: #ffffff;
+            padding: 16px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 30px;
             cursor: pointer;
         }
 
-        .submit-btn:hover {
-            background: #084298;
+        .btn:hover {
+            background: #1e40af;
         }
 
-        .footer-note {
+        .footer {
+            margin-top: 40px;
             font-size: 12px;
-            color: #666;
-            margin-top: 20px;
+            color: #6b7280;
             text-align: center;
         }
     </style>
@@ -108,132 +114,145 @@
 <body>
 
     <div class="container">
+
         <h1>Contributor Confidentiality & Intellectual Property Agreement</h1>
 
-        <p><strong>Company:</strong> EseSphere Limited</p>
-        <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
-        <p><strong>Effective Date:</strong> 22 December 2025</p>
-
-        <div class="section">
-            <h2>1. Definitions & Interpretation</h2>
-            <ul>
-                <li><strong>Confidential Information:</strong> All non-public information including technical data, source code, business plans, and trade secrets.</li>
-                <li><strong>Contribution:</strong> Any code, design, documentation, idea, or work product provided by the Contributor.</li>
-                <li><strong>Project:</strong> The StaffLinks platform including software, website, mobile app, and services.</li>
-            </ul>
+        <div class="meta">
+            <p><strong>Company:</strong> EseSphere Limited</p>
+            <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
+            <p><strong>Effective Date:</strong> 22 December 2025</p>
         </div>
 
-        <div class="section">
-            <h2>2. Purpose</h2>
-            <p>The Contributor may access Confidential Information solely for evaluating, developing, testing, or contributing to the StaffLinks platform.</p>
+        <h2>1. Definitions</h2>
+        <p>
+            “Confidential Information” includes all non-public business, technical,
+            financial, operational, and proprietary information disclosed in any form.
+        </p>
+        <p>
+            “Contribution” means any software, source code, designs, documentation,
+            inventions, discoveries, or materials created by the Contributor.
+        </p>
+
+        <h2>2. Purpose</h2>
+        <p>
+            The Contributor is granted limited access to Confidential Information solely
+            for the purpose of evaluating, developing, testing, or contributing to the
+            StaffLinks platform.
+        </p>
+
+        <h2>3. Contributor Representations</h2>
+        <ul>
+            <li>All Contributions are original and lawfully created.</li>
+            <li>No Contribution infringes intellectual property or legal rights of third parties.</li>
+            <li>The Contributor has full legal capacity to enter this Agreement.</li>
+        </ul>
+
+        <h2>4. Confidentiality Obligations</h2>
+        <ul>
+            <li>Maintain Confidential Information in strict confidence.</li>
+            <li>Use Confidential Information only for authorised purposes.</li>
+            <li>Apply reasonable security measures to prevent unauthorised disclosure.</li>
+        </ul>
+
+        <h2>5. Confidentiality Exceptions</h2>
+        <p>
+            Confidential Information does not include information that is publicly available,
+            lawfully received from third parties, independently developed, or required to
+            be disclosed by law.
+        </p>
+
+        <h2>6. Intellectual Property Assignment</h2>
+        <p>
+            The Contributor irrevocably assigns to EseSphere Limited all rights, title,
+            and interest in all Contributions worldwide, including copyrights,
+            patents, trade secrets, and derivative works.
+        </p>
+
+        <h2>7. Moral Rights Waiver</h2>
+        <p>
+            The Contributor waives all moral rights in Contributions to the extent
+            permitted by law, including the right to be identified as author.
+        </p>
+
+        <h2>8. GitHub & Repository Contributions</h2>
+        <p>
+            All Contributions made through GitHub, GitLab, Bitbucket, or similar repositories
+            are deemed “work made for hire” and remain the exclusive property of EseSphere Limited.
+        </p>
+
+        <h2>9. No Ownership, Equity, or Founder Status</h2>
+        <p>
+            This Agreement does not grant any equity, shares, voting rights, or ownership
+            interest unless expressly agreed in writing.
+        </p>
+
+        <h2>10. Compensation Disclaimer</h2>
+        <p>
+            The Contributor acknowledges that no payment or remuneration is provided at
+            this stage of development.
+        </p>
+
+        <div class="checkbox">
+            <input type="checkbox" required>
+            <label>I fully understand and accept that no payment is provided at this stage.</label>
         </div>
 
-        <div class="section">
-            <h2>3. Representations & Warranties</h2>
-            <ul>
-                <li>All contributions are original and do not infringe third-party rights.</li>
-                <li>The Contributor has full authority to enter this Agreement.</li>
-            </ul>
+        <h2>11. Independent Contractor Status</h2>
+        <p>
+            Nothing in this Agreement creates an employment, partnership, agency,
+            or joint venture relationship.
+        </p>
+
+        <h2>12. Data Protection & GDPR</h2>
+        <p>
+            The Contributor agrees to comply with all applicable data protection laws,
+            including the UK GDPR and Data Protection Act 2018.
+        </p>
+
+        <h2>13. Limitation of Liability</h2>
+        <p>
+            EseSphere Limited shall not be liable for indirect or consequential damages.
+            Participation is at the Contributor’s own risk.
+        </p>
+
+        <h2>14. Indemnification</h2>
+        <p>
+            The Contributor agrees to indemnify and hold harmless the Company against
+            any claims arising from breach of this Agreement.
+        </p>
+
+        <h2>15. Governing Law & Dispute Resolution</h2>
+        <p>
+            This Agreement is governed by the laws of England and Wales.
+            Any dispute shall be resolved by binding arbitration.
+        </p>
+
+        <h2>16. Electronic Execution</h2>
+        <p>
+            This Agreement may be executed electronically and shall have the same
+            legal effect as a handwritten signature.
+        </p>
+
+        <h2>Acceptance & Digital Signature</h2>
+
+        <label>Full Legal Name</label>
+        <input type="text" required>
+
+        <label>Role / Company</label>
+        <input type="text">
+
+        <label>Date</label>
+        <input type="date" required>
+
+        <label>Signature</label>
+        <div class="signature-box"></div>
+
+        <button class="btn">Accept & Sign Agreement</button>
+
+        <div class="footer">
+            © EseSphere Limited. This agreement is legally binding upon submission.
         </div>
 
-        <div class="section">
-            <h2>4. Confidentiality Obligations</h2>
-            <ul>
-                <li>Maintain strict confidentiality.</li>
-                <li>Use information only for authorised purposes.</li>
-                <li>Prevent unauthorised access or disclosure.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>5. Confidentiality Exceptions</h2>
-            <p>Confidential Information does not include information that is public, lawfully obtained, independently developed, or legally required to be disclosed.</p>
-        </div>
-
-        <div class="section">
-            <h2>6. Intellectual Property Assignment</h2>
-            <p>The Contributor irrevocably assigns all intellectual property rights related to the StaffLinks Project to EseSphere Limited.</p>
-        </div>
-
-        <div class="section">
-            <h2>7. GitHub & Code Contributions</h2>
-            <p>All repository contributions are deemed “work made for hire” and remain the exclusive property of EseSphere Limited.</p>
-        </div>
-
-        <div class="section">
-            <h2>8. Founder, Equity & Ownership Disclaimer</h2>
-            <p>No founder status, equity, shares, or ownership rights are granted unless explicitly agreed in writing.</p>
-        </div>
-
-        <div class="section">
-            <h2>9. No Partnership or Employment</h2>
-            <p>This Agreement does not create an employment or partnership relationship.</p>
-        </div>
-
-        <div class="section">
-            <h2>10. Compensation & Revenue-Based Remuneration</h2>
-            <p><strong>No Payment at This Stage.</strong> Compensation may only be considered after full development and commercial success.</p>
-
-            <div class="checkbox-group">
-                <input type="checkbox" required>
-                <label>I understand there is no payment at this stage.</label>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>11. Term & Termination</h2>
-            <p>This Agreement remains in effect until terminated. IP and confidentiality clauses survive termination.</p>
-        </div>
-
-        <div class="section">
-            <h2>12. Liability Limitations</h2>
-            <p>The Contributor participates at their own risk.</p>
-        </div>
-
-        <div class="section">
-            <h2>13. Indemnification</h2>
-            <p>The Contributor agrees to indemnify the Company against breaches or infringement claims.</p>
-        </div>
-
-        <div class="section">
-            <h2>14. Dispute Resolution</h2>
-            <p>Disputes shall be resolved by binding arbitration under the laws of England and Wales.</p>
-        </div>
-
-        <div class="section">
-            <h2>15. Governing Law</h2>
-            <p>This Agreement is governed by the laws of England and Wales.</p>
-        </div>
-
-        <div class="section">
-            <h2>Acceptance & Signature</h2>
-
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your full name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Role / Company</label>
-                <input type="text" placeholder="Your role or company name">
-            </div>
-
-            <div class="form-group">
-                <label>Date</label>
-                <input type="date" required>
-            </div>
-
-            <div class="form-group">
-                <label>Signature (Type full name or draw with a signature tool)</label>
-                <div class="signature"></div>
-            </div>
-
-            <button class="submit-btn">Agree & Sign</button>
-        </div>
-
-        <div class="footer-note">
-            This agreement is legally binding once submitted electronically.
-        </div>
     </div>
 
 </body>
