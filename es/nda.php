@@ -13,6 +13,7 @@
             font-family: "Segoe UI", Arial, sans-serif;
             background: #eef1f5;
             padding: 20px;
+            color: #1f2937;
         }
 
         .container {
@@ -39,6 +40,10 @@
         li {
             line-height: 1.7;
             font-size: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
         }
 
         label {
@@ -98,44 +103,145 @@
     <div class="container">
 
         <h1>Contributor Confidentiality & Intellectual Property Agreement</h1>
+
         <p><strong>Company:</strong> EseSphere Limited</p>
         <p><strong>Project:</strong> StaffLinks – Simplify. Organize. Thrive</p>
         <p><strong>Effective Date:</strong> 22 December 2025</p>
 
-        <h2>Agreement Terms</h2>
+        <h2>1. Definitions & Interpretation</h2>
+        <ul>
+            <li><strong>Confidential Information:</strong> All information disclosed to the Contributor that is not publicly available, including technical data, source code, business plans, and trade secrets.</li>
+            <li><strong>Contribution:</strong> Any code, design, documentation, idea, or work product provided by the Contributor to the Company.</li>
+            <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, and associated services.</li>
+        </ul>
+
+        <h2>2. Purpose</h2>
         <p>
-            This Agreement governs all contributions, intellectual property rights,
-            confidential information, and participation by the Contributor in the StaffLinks
-            platform operated by EseSphere Limited.
+            The Contributor may access Confidential Information solely for evaluating, developing,
+            testing, or contributing to the StaffLinks platform.
         </p>
 
-        <p><strong>Key Legal Acknowledgement:</strong>
-            By signing below, the Contributor irrevocably assigns all intellectual property,
-            waives moral rights, agrees to confidentiality obligations, and acknowledges
-            that no payment is provided at this stage.
+        <h2>3. Representations & Warranties</h2>
+        <ul>
+            <li>The Contributor represents that all contributions are original and do not infringe third-party rights.</li>
+            <li>The Contributor has full right and authority to enter this Agreement and assign all intellectual property to the Company.</li>
+        </ul>
+
+        <h2>4. Confidentiality Obligations</h2>
+        <ul>
+            <li>Maintain all Confidential Information in strict confidence.</li>
+            <li>Use information solely for authorised project purposes.</li>
+            <li>Prevent unauthorised access, sharing, or copying.</li>
+        </ul>
+
+        <h2>5. Confidentiality Exceptions</h2>
+        <p>
+            Confidential Information does not include information that:
+        </p>
+        <ul>
+            <li>(a) is publicly available without breach;</li>
+            <li>(b) was lawfully obtained from a third party;</li>
+            <li>(c) is independently developed by the Contributor without reference to the Company’s Confidential Information; or</li>
+            <li>(d) is required to be disclosed by law or court order.</li>
+        </ul>
+
+        <h2>6. Intellectual Property Assignment</h2>
+        <p>
+            The Contributor irrevocably assigns to EseSphere Limited all rights, title,
+            and interest in any work product, code, designs, inventions, documentation,
+            or materials created in connection with the StaffLinks Project, whether
+            created individually or jointly.
         </p>
 
-        <h2>Compensation Disclaimer</h2>
+        <h2>7. GitHub & Code Contributions</h2>
+        <p>
+            All code contributions made via GitHub, GitLab, Bitbucket, or any other repository
+            related to the project shall be deemed “work made for hire” and the exclusive
+            property of EseSphere Limited, regardless of repository ownership or contributor username.
+        </p>
+
+        <h2>8. Founder, Equity & Ownership Disclaimer</h2>
+        <p>
+            Contribution to the project does not grant the Contributor founder status,
+            equity, shares, voting rights, or ownership interest in the Company unless
+            explicitly agreed in writing.
+        </p>
+
+        <h2>9. No Partnership or Employment</h2>
+        <p>
+            Nothing in this Agreement creates an employment, partnership, agency,
+            or joint venture relationship.
+        </p>
+
+        <h2>10. Compensation & Revenue-Based Remuneration</h2>
+        <p><strong>NOTE: No Payment at This Stage</strong></p>
+        <p>
+            The Contributor acknowledges that the software is under development and that
+            no payment or financial compensation is provided at this stage. Compensation
+            may only be considered after full development and commercial success,
+            subject to written agreement.
+        </p>
+
         <div class="checkbox">
             <input type="checkbox" required>
-            <label>I understand and accept that no payment is provided at this stage.</label>
+            <label>I understand there is no payment at this stage.</label>
         </div>
 
-        <h2>Contributor Details</h2>
+        <h2>11. Term & Termination</h2>
+        <p>
+            This Agreement shall remain in effect until terminated by either party upon
+            written notice. Sections relating to intellectual property, confidentiality,
+            and warranties shall survive termination.
+        </p>
+
+        <h2>12. Liability Limitations</h2>
+        <p>
+            The Company shall not be liable for any indirect, incidental, or consequential
+            damages arising from the Contributor’s involvement in the project.
+            The Contributor agrees to participate at their own risk.
+        </p>
+
+        <h2>13. Indemnification</h2>
+        <p>
+            The Contributor agrees to indemnify and hold harmless the Company against
+            any claims, damages, or losses arising from breach of this Agreement,
+            infringement of third-party rights, or illegal contributions.
+        </p>
+
+        <h2>14. Dispute Resolution</h2>
+        <p>
+            Any dispute arising from this Agreement shall first be attempted to resolve
+            through good faith negotiation. If unresolved, disputes shall be submitted
+            to binding arbitration under the laws of England and Wales.
+        </p>
+
+        <h2>15. Governing Law & Jurisdiction</h2>
+        <p>
+            This Agreement is governed by the laws of England and Wales, with exclusive
+            jurisdiction vested in its courts.
+        </p>
+
+        <h2>16. Entire Agreement & Amendments</h2>
+        <p>
+            This Agreement constitutes the entire agreement between the parties.
+            Any amendment must be in writing and signed by both parties.
+        </p>
+
+        <h2>Acceptance & Signature</h2>
 
         <form method="POST" action="submit_agreement.php" onsubmit="return submitAgreement();">
 
-            <label>Full Legal Name</label>
-            <input type="text" id="full_name" name="full_name" required>
+            <label>Full Name</label>
+            <input type="text" name="full_name" id="full_name" required>
 
             <label>Email Address</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" name="email" id="email" required>
 
             <label>Role / Company</label>
-            <input type="text" id="role" name="role">
+            <input type="text" name="role" id="role">
 
             <label>Date</label>
-            <input type="date" id="date" name="date" required>
+            <input type="date" name="date" id="date" required>
 
             <label>Signature</label>
             <canvas id="signaturePad" width="500" height="150"></canvas>
@@ -148,7 +254,7 @@
         </form>
 
         <div class="footer">
-            © EseSphere Limited — Electronic execution legally binding
+            © EseSphere Limited — Electronic execution is legally binding
         </div>
 
     </div>
@@ -158,7 +264,6 @@
         const ctx = canvas.getContext("2d");
         let drawing = false;
 
-        // Mouse
         canvas.addEventListener("mousedown", () => drawing = true);
         canvas.addEventListener("mouseup", () => {
             drawing = false;
@@ -166,7 +271,6 @@
         });
         canvas.addEventListener("mousemove", draw);
 
-        // Touch
         canvas.addEventListener("touchstart", e => {
             drawing = true;
             drawTouch(e);
@@ -210,13 +314,12 @@
                 jsPDF
             } = window.jspdf;
             const pdf = new jsPDF();
-            pdf.text("EseSphere Limited – Contributor Agreement", 20, 20);
+            pdf.text("Contributor Confidentiality & Intellectual Property Agreement", 20, 20);
             pdf.text(`Name: ${full_name.value}`, 20, 40);
-            pdf.text(`Email: ${email.value}`, 20, 48);
-            pdf.text(`Role: ${role.value}`, 20, 56);
-            pdf.text(`Date: ${date.value}`, 20, 64);
-            pdf.text("Signature:", 20, 80);
-            pdf.addImage(signature, "PNG", 20, 85, 80, 30);
+            pdf.text(`Role / Company: ${role.value}`, 20, 48);
+            pdf.text(`Date: ${date.value}`, 20, 56);
+            pdf.text("Signature:", 20, 72);
+            pdf.addImage(signature, "PNG", 20, 78, 80, 30);
 
             document.getElementById("pdf_data").value = pdf.output("datauristring");
             return true;
