@@ -106,24 +106,12 @@
             margin-right: 8px;
         }
 
-        #signaturePreview {
-            border: 1px solid #001f4d;
-            border-radius: 8px;
-            width: 100%;
-            height: 180px;
-            margin-top: 10px;
-        }
-
         @media (max-width: 576px) {
             .agreement-card {
                 padding: 25px;
             }
 
             canvas {
-                height: 140px;
-            }
-
-            #signaturePreview {
                 height: 140px;
             }
         }
@@ -260,7 +248,6 @@
                     <label class="form-label"><i class="fa-solid fa-pen-fancy"></i> Signature</label>
                     <canvas id="signaturePad"></canvas>
                     <button type="button" class="btn btn-warning btn-clear mt-2" id="clearBtn"><i class="fa-solid fa-eraser"></i> Clear</button>
-                    <img id="signaturePreview" alt="Your signature will appear here">
                 </div>
 
                 <div class="mb-3">
@@ -276,19 +263,19 @@
     <script>
         const canvas = document.getElementById('signaturePad');
         const ctx = canvas.getContext('2d');
-        const preview = document.getElementById('signaturePreview');
         let drawing = false;
 
+        // Resize canvas for high-DPI
         function resizeCanvas() {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
             canvas.width = canvas.offsetWidth * ratio;
             canvas.height = canvas.offsetHeight * ratio;
             ctx.scale(ratio, ratio);
-            updatePreview();
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
+        // Drawing functions
         function startDrawing(x, y) {
             drawing = true;
             ctx.beginPath();
@@ -304,44 +291,32 @@
             ctx.stroke();
             ctx.beginPath();
             ctx.moveTo(x, y);
-            updatePreview();
         }
 
         function stopDrawing() {
             drawing = false;
-            updatePreview();
         }
 
-        function updatePreview() {
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = canvas.width;
-            tempCanvas.height = canvas.height;
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.fillStyle = "#ffffff";
-            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-            tempCtx.drawImage(canvas, 0, 0);
-            preview.src = tempCanvas.toDataURL('image/jpeg', 1.0);
-        }
-
-        // Mouse & touch events
-        canvas.addEventListener('mousedown', e => startDrawing(e.offsetX, e.offsetY));
-        canvas.addEventListener('mousemove', e => drawLine(e.offsetX, e.offsetY));
+        // Mouse events
+        canvas.addEventListener('mousedown', (e) => startDrawing(e.offsetX, e.offsetY));
+        canvas.addEventListener('mousemove', (e) => drawLine(e.offsetX, e.offsetY));
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseout', stopDrawing);
 
-        canvas.addEventListener('touchstart', e => {
+        // Touch events
+        canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0];
             startDrawing(touch.clientX - rect.left, touch.clientY - rect.top);
         });
-        canvas.addEventListener('touchmove', e => {
+        canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
             const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0];
             drawLine(touch.clientX - rect.left, touch.clientY - rect.top);
         });
-        canvas.addEventListener('touchend', e => {
+        canvas.addEventListener('touchend', (e) => {
             e.preventDefault();
             stopDrawing();
         });
@@ -349,11 +324,11 @@
         // Clear button
         document.getElementById('clearBtn').addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            updatePreview();
         });
 
-        // Form submission with flattened JPEG for PDF
+        // Form submission with flattened JPEG
         document.getElementById('agreementForm').addEventListener('submit', function(e) {
+            // Flatten canvas to white background
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = canvas.width;
             tempCanvas.height = canvas.height;
@@ -364,17 +339,18 @@
 
             const signatureData = tempCanvas.toDataURL('image/jpeg', 1.0);
 
+            // Check if signature is empty
             const blankCanvas = document.createElement('canvas');
             blankCanvas.width = canvas.width;
             blankCanvas.height = canvas.height;
             const blankData = blankCanvas.toDataURL('image/jpeg', 1.0);
-
             if (signatureData === blankData) {
                 e.preventDefault();
                 alert('Please provide a signature.');
                 return;
             }
 
+            // Append hidden input
             let input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'signature';
