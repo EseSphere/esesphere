@@ -348,5 +348,9 @@
            input.value = signatureData;
            this.appendChild(input);
        });
+       document.getElementById('resetBtn').addEventListener('click', () => {
+           ctx.clearRect(0, 0, canvas.width, canvas.height);
+           updatePreview();
+       });
    </script>
    <?php include('footer.php'); ?>
