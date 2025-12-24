@@ -5,7 +5,7 @@ require_once('tcpdf/tcpdf.php'); // Include TCPDF
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "your_database";
+$db   = "esesphere";
 
 // Create connection
 $conn = new mysqli($host, $user, $pass, $db);
