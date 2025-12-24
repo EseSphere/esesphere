@@ -95,6 +95,151 @@
             font-size: 12px;
             color: #6b7280;
         }
+
+        /* Modern signature form */
+        .signature-form {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .form-title {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            margin-top: 6px;
+        }
+
+        .signature-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .signature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .signature-hint {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        .clear-btn {
+            background: transparent;
+            border: none;
+            color: #dc2626;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            text-decoration: underline;
+        }
+
+        .primary-btn {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8);
+        }
+
+        .legal-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .preview-btn {
+            margin-top: 20px;
+            background: #e5e7eb;
+            color: #111827;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .preview-btn:hover {
+            background: #d1d5db;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            background: #fff;
+            max-width: 900px;
+            height: 90vh;
+            margin: 5vh auto;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .modal-content iframe {
+            flex: 1;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
