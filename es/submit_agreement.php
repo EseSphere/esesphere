@@ -2,6 +2,7 @@
 require_once('tcpdf/tcpdf.php'); // Include TCPDF
 
 // Database credentials
+//submit_agreement.php
 $host = "localhost";
 $user = "root";
 $pass = "";
