@@ -78,7 +78,12 @@
 
                <div class="section-card">
                    <p><i class="fa-solid fa-money-bill-wave section-icon"></i><strong>10. Compensation & Revenue-Based Remuneration</strong></p>
-                   <p>NOTE: No Payment at This Stage. Compensation may be considered after full development and commercial success, subject to written agreement. Acknowledgment (Initial): <input type="text" placeholder="Your initials" class="form-control mb-2" style="width: 160px;"></p>
+                   <p>
+                       NOTE: No payment will be made at this stage. Compensation will commence after full development and commercial success of the project, subject to a written agreement. Payment will be made to all contributors under the terms of an agreed employment contract, which will commence once the project has been successfully completed and begins generating profit.
+                       <br><br>
+                       Acknowledgment (Initial):
+                       <input type="text" placeholder="Your initials" class="form-control mb-2" style="width: 160px;">
+                   </p>
                </div>
 
                <div class="section-card">
