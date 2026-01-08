@@ -1,7 +1,6 @@
    <?php include('header.php'); ?>
    <link rel="stylesheet" href="./assets/css/style.css">
 
-
    <div class="container">
        <div class="agreement-card">
            <h1><i class="fa-solid fa-file-signature"></i> Contributor Confidentiality & IP Agreement</h1>
