@@ -15,71 +15,71 @@
                <div class="section-card">
                    <p><i class="fa-solid fa-circle-info section-icon"></i><strong>1. Definitions & Interpretation</strong></p>
                    <ul>
-                       <li><strong>Confidential Information:</strong> Any information disclosed to the Contributor that is not publicly known, including software architecture, source code, business plans, user data, algorithms, financials, and trade secrets.</li>
-                       <li><strong>Contribution:</strong> Any code, design, documentation, idea, research, prototype, or other work product provided by the Contributor.</li>
-                       <li><strong>Project:</strong> The StaffLinks platform, including its software, website, mobile app, features, modules, updates, and associated services.</li>
-                       <li><strong>Company Materials:</strong> Any documentation, tools, data, or resources provided by the Company to the Contributor for the project.</li>
+                       <li><strong>Confidential Information:</strong> Any non-public, proprietary, or sensitive information disclosed verbally, visually, electronically, or in writing, including but not limited to source code, system architecture, credentials, APIs, user data, business strategies, financial information, technical documentation, and trade secrets.</li>
+                       <li><strong>Contribution:</strong> Any intellectual, creative, or technical output provided by the Contributor, including code, designs, UI/UX assets, documentation, concepts, algorithms, workflows, research, testing feedback, and prototypes.</li>
+                       <li><strong>Project:</strong> The StaffLinks platform in all forms, including web applications, mobile applications, backend services, APIs, databases, integrations, updates, upgrades, and future derivatives.</li>
+                       <li><strong>Company Materials:</strong> Any tools, credentials, repositories, documentation, assets, or data provided by EseSphere Limited for the purpose of executing the project.</li>
                    </ul>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-bullseye section-icon"></i><strong>2. Purpose</strong></p>
-                   <p>The Contributor may access Confidential Information solely for evaluating, developing, testing, or contributing to the StaffLinks platform. The purpose includes improving platform functionality, debugging, user experience enhancement, and feature development.</p>
+                   <p>The Contributor may access Confidential Information solely for the purpose of evaluating, developing, testing, maintaining, improving, or supporting the StaffLinks platform. This includes feature development, performance optimisation, security enhancements, bug fixing, documentation, and user experience improvements.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-shield-halved section-icon"></i><strong>3. Representations & Warranties</strong></p>
                    <ul>
-                       <li>The Contributor represents that all contributions are original, free from any third-party rights, and created independently unless otherwise disclosed.</li>
-                       <li>The Contributor has full legal authority to enter this Agreement and assign intellectual property rights to the Company.</li>
-                       <li>The Contributor warrants that no contributions violate any laws, regulations, or contractual obligations.</li>
+                       <li>The Contributor confirms that all Contributions are original or properly licensed and do not infringe any intellectual property, privacy, or contractual rights of any third party.</li>
+                       <li>The Contributor has full legal capacity and authority to enter into this Agreement and to assign all rights granted herein.</li>
+                       <li>The Contributor warrants compliance with all applicable laws, regulations, data protection requirements, and ethical standards.</li>
                    </ul>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-lock section-icon"></i><strong>4. Confidentiality Obligations</strong></p>
                    <ul>
-                       <li>Keep all Confidential Information strictly confidential.</li>
-                       <li>Use information solely for authorized project purposes.</li>
-                       <li>Prevent unauthorized access, sharing, duplication, or use for personal gain.</li>
-                       <li>Immediately report any suspected breaches or unauthorized disclosures.</li>
+                       <li>Maintain strict confidentiality of all Confidential Information during and after participation.</li>
+                       <li>Limit access to Confidential Information strictly to authorised project-related activities.</li>
+                       <li>Not copy, distribute, publish, sell, or exploit Confidential Information for personal or third-party benefit.</li>
+                       <li>Notify the Company immediately of any unauthorised access, disclosure, or security incident.</li>
                    </ul>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-exclamation-triangle section-icon"></i><strong>5. Confidentiality Exceptions</strong></p>
                    <ul>
-                       <li>(a) Information already public without breach.</li>
-                       <li>(b) Lawfully obtained from a third party without obligation of confidentiality.</li>
-                       <li>(c) Independently developed without using Company’s Confidential Information.</li>
-                       <li>(d) Required to be disclosed by law, regulation, or court order.</li>
+                       <li>(a) Information that becomes publicly available without breach of this Agreement.</li>
+                       <li>(b) Information lawfully obtained from a third party without confidentiality restrictions.</li>
+                       <li>(c) Information independently developed without reference to Company Confidential Information.</li>
+                       <li>(d) Information required to be disclosed by law, regulation, or court order, provided prompt notice is given where legally permitted.</li>
                    </ul>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-lightbulb section-icon"></i><strong>6. Intellectual Property Assignment</strong></p>
-                   <p>The Contributor irrevocably assigns to EseSphere Limited all rights, title, and interest in any work product, code, design, invention, documentation, or other contributions created in connection with the StaffLinks Project, whether individually or jointly.</p>
+                   <p>The Contributor hereby irrevocably assigns to EseSphere Limited all worldwide intellectual property rights, including copyrights, patents, trademarks, and moral rights (to the fullest extent permitted by law), in any Contribution created in connection with the StaffLinks Project.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-code section-icon"></i><strong>7. GitHub & Code Contributions</strong></p>
-                   <p>All code contributions submitted through repositories such as GitHub, GitLab, Bitbucket, or other platforms are considered "work made for hire" and are the exclusive property of EseSphere Limited, regardless of repository ownership or username.</p>
+                   <p>All code and technical contributions submitted through GitHub or similar platforms are deemed “work made for hire” and shall vest exclusively in EseSphere Limited. Repository access does not imply ownership or licensing rights to the Contributor.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-user-check section-icon"></i><strong>8. Founder, Equity & Ownership Disclaimer</strong></p>
-                   <p>Participation or contribution to the project does not grant founder status, equity, shares, voting rights, or ownership interest unless explicitly documented in a separate written agreement.</p>
+                   <p>Contribution to the project does not confer founder status, equity, profit-sharing rights, shares, decision-making authority, or ownership interest unless explicitly granted in a separate signed agreement.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-handshake section-icon"></i><strong>9. No Partnership or Employment</strong></p>
-                   <p>Nothing in this Agreement shall create an employment, partnership, agency, or joint venture relationship. The Contributor is an independent collaborator, not an employee or agent of the Company.</p>
+                   <p>This Agreement does not establish an employment relationship, partnership, joint venture, agency, or fiduciary duty. The Contributor acts as an independent collaborator and bears responsibility for their own taxes, insurance, and legal obligations.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-money-bill-wave section-icon"></i><strong>10. Compensation & Revenue-Based Remuneration</strong></p>
                    <p>
-                       NOTE: No payment will be made at this stage. Compensation will commence after full development and commercial success of the project, subject to a written agreement. Payment will be made to all contributors under the terms of an agreed employment contract, which will commence once the project has been successfully completed and begins generating profit.
+                       NOTE: No payment will be made at this stage. Compensation will commence only after the full development, deployment, and commercial success of the project, subject to a separate written agreement. Any remuneration shall be governed by an agreed employment or consultancy contract, which will take effect once the project begins generating sustainable profit.
                        <br><br>
                        Acknowledgment (Initial):
                        <input type="text" placeholder="Your initials" class="form-control mb-2" style="width: 160px;">
@@ -88,32 +88,32 @@
 
                <div class="section-card">
                    <p><i class="fa-solid fa-calendar-days section-icon"></i><strong>11. Term & Termination</strong></p>
-                   <p>This Agreement remains in effect until terminated by either party upon written notice. Sections relating to intellectual property, confidentiality, and warranties shall survive termination.</p>
+                   <p>This Agreement shall remain in force from the Effective Date until terminated by either party upon written notice. Obligations relating to confidentiality, intellectual property, indemnification, and warranties shall survive termination indefinitely.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-shield-virus section-icon"></i><strong>12. Liability Limitations</strong></p>
-                   <p>The Company shall not be liable for any indirect, incidental, or consequential damages arising from the Contributor’s participation. Contributors participate at their own risk and are responsible for adherence to laws and policies.</p>
+                   <p>To the maximum extent permitted by law, EseSphere Limited shall not be liable for indirect, incidental, special, or consequential damages arising from participation in the project. Contributors engage at their own discretion and risk.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-gavel section-icon"></i><strong>13. Indemnification</strong></p>
-                   <p>The Contributor agrees to indemnify and hold harmless the Company against claims, damages, or losses arising from breach of this Agreement, infringement of third-party rights, or illegal contributions.</p>
+                   <p>The Contributor agrees to indemnify and hold harmless EseSphere Limited against all claims, damages, losses, and expenses arising from breach of this Agreement, intellectual property infringement, or unlawful conduct.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-hand-holding-hand section-icon"></i><strong>14. Dispute Resolution</strong></p>
-                   <p>Any dispute arising shall first be attempted through good faith negotiation. If unresolved, disputes shall be submitted to binding arbitration under the laws of England and Wales.</p>
+                   <p>Any dispute shall first be addressed through good-faith negotiation. If unresolved, disputes shall be finally resolved by binding arbitration in accordance with the laws of England and Wales.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-landmark section-icon"></i><strong>15. Governing Law & Jurisdiction</strong></p>
-                   <p>This Agreement is governed by the laws of England and Wales, and courts of England and Wales shall have exclusive jurisdiction.</p>
+                   <p>This Agreement shall be governed by and construed in accordance with the laws of England and Wales, with exclusive jurisdiction vested in its courts.</p>
                </div>
 
                <div class="section-card">
                    <p><i class="fa-solid fa-file-contract section-icon"></i><strong>16. Entire Agreement & Amendments</strong></p>
-                   <p>This Agreement constitutes the entire agreement between parties. Amendments must be in writing and signed by both parties. No oral statements, prior agreements, or understandings shall have any effect.</p>
+                   <p>This document constitutes the entire agreement between the parties and supersedes all prior discussions or understandings. Any amendments must be made in writing and signed by both parties.</p>
                </div>
 
            </div>
