@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "GitHub & Code Contributions" => "All repository contributions are work made for hire and exclusive property of the Company.",
         "Founder, Equity & Ownership Disclaimer" => "Contributions do not confer founder status, equity, or ownership unless agreed in writing.",
         "No Partnership or Employment" => "Nothing creates employment, partnership, agency, or joint venture.",
-        "Compensation & Revenue-Based Remuneration" => "No payment at this stage. Compensation may be considered after development and commercial success.",
+        "Compensation & Revenue-Based Remuneration" => "No payment will be made at this stage. Compensation will commence after full development and commercial success of the project, subject to a written agreement. Payment will be made to all contributors under the terms of an agreed employment contract, which will commence once the project has been successfully completed and begins generating profit.",
         "Term & Termination" => "Agreement remains effective until terminated; IP and confidentiality sections survive termination.",
         "Liability Limitations" => "Company not liable for indirect, incidental, or consequential damages; participation at Contributor’s own risk.",
         "Indemnification" => "Contributor indemnifies the Company against claims, damages, or losses arising from breach or illegal contributions.",
