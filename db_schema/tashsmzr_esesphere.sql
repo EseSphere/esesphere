@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 01, 2025 at 11:13 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Jan 08, 2026 at 05:50 AM
+-- Server version: 11.4.9-MariaDB-cll-lve-log
+-- PHP Version: 8.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `esesphere`
+-- Database: `tashsmzr_esesphere`
 --
 
 -- --------------------------------------------------------
@@ -60,7 +60,39 @@ CREATE TABLE `client_requests` (
 --
 
 INSERT INTO `client_requests` (`id`, `full_name`, `company_name`, `email`, `phone`, `service_type`, `project_type`, `technology`, `business_description`, `project_purpose`, `features`, `competitors`, `style_preference`, `marketing_focus`, `ad_budget`, `marketing_goals`, `current_presence`, `target_audience`, `kpis`, `budget`, `deadline`, `attachments`, `communication`, `nda_agreement`, `submitted_at`) VALUES
-(1, 'Karyn Johns', 'Holden Donaldson LLC', 'qemo@mailinator.com', '+1 (477) 611-2675', 'Both', 'Mobile Application', 'Other', 'Voluptatem mollit do', 'Ullamco et in ut qui', 'Admin Dashboard,Live Chat,Analytics,Other', 'Qui animi consequat', 'Luxury / Premium Feel', 'Content Creation', '£3000 - £5000', 'Cillum et odio ullam', 'Sit quia numquam ven', 'Et amet vitae solut', 'Rerum soluta volupta', '£500 - £1000', '2025-10-28', 'uploads/1761650515_Screenshot 2025-07-19 100952.png', 'Email', 'Yes', '2025-10-28 11:21:55');
+(1, 'Sylvester Bruce', 'May and Estes Plc', 'samsonosaretin@yahoo.com', '+1 (923) 569-8069', 'Development & Marketing', 'Web Application', 'Other', 'Totam voluptatum dic', 'Quia iusto vero ex d', 'Payment Gateway,Booking System,Blog or News,Analytics,Other', 'In minim libero debi', 'Luxury / Premium Feel', 'Google Ads / PPC', '£500 - £1000', 'Et error commodi mai', 'Est laboriosam ut c', 'Ipsum qui numquam e', 'Adipisci ex suscipit', '£1000 - £3000', '1998-04-15', 'uploads/1761660848_Screenshot 2025-07-19 102226.png', 'Zoom / Google Meet', 'Yes', '2025-10-28 14:14:08'),
+(2, 'Saheed Savage', 'Savvyloft Care Services Limited', 'admin@savvyloft.co.uk', '07835096071', 'Web Development', 'Website', 'WordPress', 'Social Health care provider', 'Google optimization and to create visibility for the brand', 'Blog or News,Live Chat', '', 'Modern & Minimal', 'SEO (Search Engine Optimization)', '£150 - £200', 'generate leads, create brand awareness, and drive traffic', 'Facebook', 'people that needs social care, mostly elderly citizens', 'clicks, conversion, and ROI', '£1000 - £3000', '2025-11-28', '', 'Phone Call', 'Yes', '2025-10-29 17:19:34'),
+(3, 'Hayes Cobb', 'Davenport Moon Trading', 'niragapoce@mailinator.com', '+1 (889) 913-7639', 'Web Development', 'Mobile Application', 'Laravel', 'Veniam sint numquam', 'Veritatis expedita t', 'Admin Dashboard,Booking System,Other', 'In consequatur tene', 'Dark Mode / Sleek', 'Email Marketing', '£1000 - £3000', 'In cum veniam quia', 'Nulla tempora quibus', 'Enim odit sit et lo', 'Occaecat consequuntu', '£10,000+', '2017-02-08', '', 'Email', 'Yes', '2025-11-24 21:04:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contributor_agreements`
+--
+
+CREATE TABLE `contributor_agreements` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `signature_path` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contributor_agreements`
+--
+
+INSERT INTO `contributor_agreements` (`id`, `name`, `role`, `date`, `signature_path`, `created_at`) VALUES
+(1, 'Samson Gift Osaretin', 'Full Stack Developer', '2025-12-24', 'signatures/signature_1766606378.jpg', '2025-12-24 19:59:38'),
+(2, 'Samson Gift Osaretin', 'Full Stack Developer', '2025-12-24', 'signatures/signature_1766606553.jpg', '2025-12-24 20:02:33'),
+(3, 'Samson Gift Osaretin', 'Full Stack Developer', '2025-12-24', 'signatures/signature_1766606606.jpg', '2025-12-24 20:03:26'),
+(4, 'Osemeigah Igbafe', 'Data/Software engineer', '2025-12-24', 'signatures/signature_1766615996.jpg', '2025-12-24 22:39:56'),
+(5, 'Osemeigah Igbafe', 'Data/Software engineer', '2025-12-24', 'signatures/signature_1766616002.jpg', '2025-12-24 22:40:02'),
+(6, 'Osemeigah Igbafe', 'Data/Software engineer', '2025-12-24', 'signatures/signature_1766616060.jpg', '2025-12-24 22:41:00'),
+(7, 'Erhabor Stanley ', 'Front End developer ', '2025-12-26', 'signatures/signature_1766777773.jpg', '2025-12-26 19:36:13'),
+(8, 'Erhabor Stanley ', 'Front End developer ', '2025-12-26', 'signatures/signature_1766777874.jpg', '2025-12-26 19:37:54'),
+(9, 'Erhabor Stanley ', 'Front End Developer ', '2025-12-26', 'signatures/signature_1766778311.jpg', '2025-12-26 19:45:11');
 
 -- --------------------------------------------------------
 
@@ -85,16 +117,9 @@ CREATE TABLE `course_enrollments` (
   `message` text DEFAULT NULL,
   `payment_method` enum('Credit Card','PayPal','Bank Transfer') DEFAULT NULL,
   `agreement` tinyint(1) NOT NULL DEFAULT 0,
-  `enrollment_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `enrollment_date` timestamp NULL DEFAULT current_timestamp(),
   `status` enum('Pending','Confirmed','Cancelled') DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `course_enrollments`
---
-
-INSERT INTO `course_enrollments` (`id`, `full_name`, `email`, `phone`, `dob`, `gender`, `city`, `state`, `address`, `education`, `experience`, `course`, `schedule`, `message`, `payment_method`, `agreement`, `enrollment_date`, `status`) VALUES
-(1, 'Mary Thomas', 'jessica.williams353@demo.com', '(950) 541-1826', '1988-04-23', 'Male', 'Chicago', 'Texas', '828 Church St', 'Sample Text', 'Sample Text', 'HTML & CSS Basics', 'Morning', '26', 'Credit Card', 1, '2025-11-01 22:04:51', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -138,11 +163,8 @@ CREATE TABLE `website_visitors` (
 --
 
 INSERT INTO `website_visitors` (`id`, `ip_address`, `user_agent`, `country`, `region`, `city`, `zip`, `latitude`, `longitude`, `isp`, `org`, `visit_time`) VALUES
-(1, '::1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 0, 0, 'UNKNOWN', 'UNKNOWN', '2025-09-21 22:02:24'),
-(2, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 0, 0, 'UNKNOWN', 'UNKNOWN', '2025-09-27 12:47:29'),
-(3, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 0, 0, 'UNKNOWN', 'UNKNOWN', '2025-10-27 21:10:48'),
-(4, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 0, 0, 'UNKNOWN', 'UNKNOWN', '2025-10-28 10:08:21'),
-(5, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 'UNKNOWN', 0, 0, 'UNKNOWN', 'UNKNOWN', '2025-11-01 19:44:15');
+(1, '74.7.243.240', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.3; +https://openai.com/gptbot)', 'United States', 'Georgia', 'Atlanta', '30301', 33, -84.3871, 'Microsoft Corporation', 'Cloud', '2026-01-08 05:50:12'),
+(2, '52.167.144.211', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36', 'United States', 'Virginia', 'Boydton', '23917', 36, -78.37471, 'Microsoft Corporation', 'Microsoft Azure Cloud (eastus2)', '2026-01-08 05:50:26');
 
 --
 -- Indexes for dumped tables
@@ -152,6 +174,12 @@ INSERT INTO `website_visitors` (`id`, `ip_address`, `user_agent`, `country`, `re
 -- Indexes for table `client_requests`
 --
 ALTER TABLE `client_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contributor_agreements`
+--
+ALTER TABLE `contributor_agreements`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -180,13 +208,19 @@ ALTER TABLE `website_visitors`
 -- AUTO_INCREMENT for table `client_requests`
 --
 ALTER TABLE `client_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `contributor_agreements`
+--
+ALTER TABLE `contributor_agreements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `course_enrollments`
 --
 ALTER TABLE `course_enrollments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nda_signatures`
@@ -198,7 +232,7 @@ ALTER TABLE `nda_signatures`
 -- AUTO_INCREMENT for table `website_visitors`
 --
 ALTER TABLE `website_visitors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

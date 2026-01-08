@@ -21,10 +21,9 @@ try {
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'UNKNOWN';
 
-$today = date('Y-m-d');
-
-$checkStmt = $conn->prepare("SELECT id FROM website_visitors WHERE ip_address = ? AND DATE(visit_time) = ?");
-$checkStmt->bind_param("ss", $ip, $today);
+// Check if IP already exists
+$checkStmt = $conn->prepare("SELECT id FROM website_visitors WHERE ip_address = ?");
+$checkStmt->bind_param("s", $ip);
 $checkStmt->execute();
 $checkStmt->store_result();
 
@@ -47,17 +46,28 @@ if ($checkStmt->num_rows == 0) {
         (ip_address, user_agent, country, region, city, zip, latitude, longitude, isp, org)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
-    $stmt->bind_param("ssssssidss", $ip, $userAgent, $country, $region, $city, $zip, $lat, $lon, $isp, $org);
+    $stmt->bind_param(
+        "ssssssidss",
+        $ip,
+        $userAgent,
+        $country,
+        $region,
+        $city,
+        $zip,
+        $lat,
+        $lon,
+        $isp,
+        $org
+    );
 
-    if ($stmt->execute()) {
-    } else {
+    if (!$stmt->execute()) {
         echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
-} else {
 }
 
+// Encryption logic (unchanged)
 $secretKey = $_ENV['APP_KEY'] ?? 'default-secret-key';
 $data = uniqid('', true);
 $iv = random_bytes(openssl_cipher_iv_length('AES-256-CBC'));
