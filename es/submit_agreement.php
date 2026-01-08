@@ -58,22 +58,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Agreement sections
     $sections = [
-        "Definitions & Interpretation" => "Confidential Information, Contribution, Project, and Company Materials as defined in the web agreement.",
-        "Purpose" => "Access Confidential Information solely for evaluating, developing, testing, or contributing to StaffLinks platform.",
-        "Representations & Warranties" => "All contributions are original, do not infringe third-party rights, and Contributor has authority to assign IP.",
-        "Confidentiality Obligations" => "Maintain information in strict confidence, use for authorized purposes, prevent unauthorized access.",
-        "Confidentiality Exceptions" => "Information that is public, independently developed, lawfully obtained, or legally required disclosure.",
-        "Intellectual Property Assignment" => "All rights, title, and interest in work products are irrevocably assigned to EseSphere Limited.",
-        "GitHub & Code Contributions" => "All repository contributions are work made for hire and exclusive property of the Company.",
-        "Founder, Equity & Ownership Disclaimer" => "Contributions do not confer founder status, equity, or ownership unless agreed in writing.",
-        "No Partnership or Employment" => "Nothing creates employment, partnership, agency, or joint venture.",
-        "Compensation & Revenue-Based Remuneration" => "No payment will be made at this stage. Compensation will commence after full development and commercial success of the project, subject to a written agreement. Payment will be made to all contributors under the terms of an agreed employment contract, which will commence once the project has been successfully completed and begins generating profit.",
-        "Term & Termination" => "Agreement remains effective until terminated; IP and confidentiality sections survive termination.",
-        "Liability Limitations" => "Company not liable for indirect, incidental, or consequential damages; participation at Contributor’s own risk.",
-        "Indemnification" => "Contributor indemnifies the Company against claims, damages, or losses arising from breach or illegal contributions.",
-        "Dispute Resolution" => "Attempt negotiation first; if unresolved, binding arbitration under laws of England and Wales.",
-        "Governing Law & Jurisdiction" => "Laws of England and Wales apply; courts of England and Wales have exclusive jurisdiction.",
-        "Entire Agreement & Amendments" => "Constitutes entire agreement; amendments must be in writing and signed by both parties."
+        "Definitions & Interpretation" =>
+        "Confidential Information includes all non-public, proprietary, or sensitive information disclosed in any form, including source code, system architecture, credentials, APIs, user data, financial records, business strategies, technical documentation, and trade secrets. Contribution refers to any intellectual, creative, or technical work provided by the Contributor. Project refers to the StaffLinks platform in all current and future forms. Company Materials include all tools, repositories, data, credentials, and resources provided by EseSphere Limited.",
+
+        "Purpose" =>
+        "The Contributor may access Confidential Information solely for the purpose of evaluating, developing, testing, maintaining, supporting, optimising, securing, or improving the StaffLinks platform, and for no other commercial or personal use.",
+
+        "Representations & Warranties" =>
+        "The Contributor represents and warrants that all Contributions are original or properly licensed, do not infringe any third-party intellectual property or contractual rights, comply with applicable laws and regulations, and that the Contributor has full legal authority to enter into this Agreement and assign intellectual property rights to the Company.",
+
+        "Confidentiality Obligations" =>
+        "The Contributor agrees to maintain all Confidential Information in strict confidence, to use such information solely for authorised project purposes, to implement reasonable security measures, and to prevent unauthorised access, disclosure, copying, or exploitation during and after participation in the project.",
+
+        "Confidentiality Exceptions" =>
+        "Confidentiality obligations shall not apply to information that becomes publicly available without breach of this Agreement, is lawfully obtained from a third party without restriction, is independently developed without reference to Confidential Information, or is required to be disclosed by law, regulation, or court order, subject to notice where legally permitted.",
+
+        "Intellectual Property Assignment" =>
+        "The Contributor irrevocably assigns to EseSphere Limited all worldwide rights, title, and interest in and to any Contributions, including all intellectual property rights, whether created individually or jointly, upon creation and without further consideration.",
+
+        "GitHub & Code Contributions" =>
+        "All code, scripts, documentation, and technical materials submitted through GitHub or any other version control or collaboration platform are deemed \"work made for hire\" and shall remain the exclusive property of EseSphere Limited, regardless of repository ownership or contributor attribution.",
+
+        "Founder, Equity & Ownership Disclaimer" =>
+        "Participation in or contribution to the project does not grant founder status, equity interest, shares, profit-sharing rights, voting rights, or ownership interest unless expressly agreed in a separate written and signed agreement.",
+
+        "No Partnership or Employment" =>
+        "Nothing in this Agreement shall be construed to create an employment relationship, partnership, joint venture, agency, or fiduciary relationship. The Contributor acts solely as an independent collaborator and is responsible for all taxes, insurance, and statutory obligations.",
+
+        "Compensation & Revenue-Based Remuneration" =>
+        "No payment will be made at this stage. Compensation will commence only after the full development, deployment, market adoption, and sustained commercial success of the project, and shall be subject to a separate written agreement. Any remuneration, salary, or revenue-based payment shall be governed by an agreed employment or consultancy contract executed once the project begins generating sustainable profit.",
+
+        "Term & Termination" =>
+        "This Agreement shall remain effective from the effective date until terminated by either party upon written notice. Provisions relating to confidentiality, intellectual property, indemnification, liability, and warranties shall survive termination indefinitely.",
+
+        "Liability Limitations" =>
+        "To the fullest extent permitted by law, EseSphere Limited shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to the Contributor’s participation in the project, including loss of profits, data, or business opportunities.",
+
+        "Indemnification" =>
+        "The Contributor agrees to indemnify, defend, and hold harmless EseSphere Limited from and against any claims, liabilities, damages, losses, costs, or expenses arising from breach of this Agreement, infringement of third-party rights, or unlawful or negligent acts.",
+
+        "Dispute Resolution" =>
+        "Any dispute arising out of or in connection with this Agreement shall first be addressed through good-faith negotiations. If unresolved, such disputes shall be finally settled by binding arbitration in accordance with the laws of England and Wales.",
+
+        "Governing Law & Jurisdiction" =>
+        "This Agreement shall be governed by and construed in accordance with the laws of England and Wales, and the courts of England and Wales shall have exclusive jurisdiction.",
+
+        "Entire Agreement & Amendments" =>
+        "This Agreement constitutes the entire understanding between the parties and supersedes all prior or contemporaneous agreements, representations, or communications. Any amendment or modification must be in writing and signed by both parties to be effective."
     ];
 
     $pdf->SetFont('helvetica', 'B', 12);
